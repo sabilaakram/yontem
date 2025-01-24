@@ -1,101 +1,81 @@
-import Image from "next/image";
+"use client";
+import Hero_slider from "@/components/hero_slider";
+import Whoweare from "@/components/who_we_are";
+import Carousel from "@/components/carsoul_container";
+import AviationSimulators from "../components/aviationsimulators";
+import MaritimeSimulators from "@/components/maritimesimulators";
+import Labatorysolutions from "@/components/labatorysolutions";
+import Specialprojects from "@/components/specialprojects";
+import Blogs from "@/components/blogs";
+import CTA from "@/components/cta";
+import News from "@/components/news";
 
 export default function Home() {
+  const imageList = [
+    { id: "1", url: "/logos/DNV.png", alt: "Image 1" },
+    { id: "2", url: "/logos/iec.png", alt: "Image 2" },
+    { id: "3", url: "/logos/iso.png", alt: "Image 3" },
+    { id: "4", url: "/logos/shsms.png", alt: "Image 4" },
+    { id: "5", url: "/logos/stcw.png", alt: "Image 5" },
+  ];
+  const slides = [
+    {
+      heading: "Unlock the next level of innovation",
+      text: "Reach out today",
+      buttonText: "Get Started",
+      buttonLink: "/discover",
+      backgroundImage: "/cta4.jpg",
+    },
+    {
+      heading: "Let us help you power your vision",
+      text: "Get a Quote now!",
+      buttonText: "Learn More",
+      buttonLink: "/learn",
+      backgroundImage: "/cta3.jpg",
+    },
+    {
+      heading: "Your ideal technology solution is just a click away",
+      text: "Get in touch with us!",
+      buttonText: "Get in Touch",
+      buttonLink: "/get-started",
+      backgroundImage: "/cta2.jpg",
+    },
+    {
+      heading: "Turn your challenges into opportunities",
+      text: "Connect with Yontem Teknoloji today!",
+      buttonText: "Connect Now",
+      buttonLink: "/get-started",
+      backgroundImage: "/cta1.jpg",
+    },
+  ];
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div>
+      <Hero_slider />
+      <Whoweare />
+      <Carousel
+          heading="Global Certifications of "
+          subheading="Excellence"
+          description="We proudly adhere to international standards like STCW, DNV-IMO, and IEC, and hold ISO 9001, 14001, and OHSAS 18001 certifications, ensuring top-quality solutions in every sector we serve."
+          images={imageList}
+          headingColor="text-[#171616]"
+          subheadingGradient="from-blue-400 via-blue-700 to-black"
+          bgColor="bg-[#D8D8D8]"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        {/* <Carousel
+          heading="Trusted Clients"
+          description="Your trusted partner for professional aircraft simulator solutions. We deliver world-class training, marine simulators, and laboratory solutions. We are trusted globally for precision and innovation."
+          images={imageList}
+          headingColor="text-[#EEE5E5]"
+          descriptionColor="text-[#EEE5E5]"
+          bgColor="bg-[#161C2D]"
+        /> */}
+      <AviationSimulators />
+      <MaritimeSimulators/>
+      <Labatorysolutions/>
+      <Specialprojects/>
+      {/* <CTA slides={slides}/>
+    <News/>
+    <Blogs/> */}
     </div>
   );
 }
