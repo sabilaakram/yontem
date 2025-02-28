@@ -60,7 +60,7 @@ function Footer() {
             </ul>
         </div>
       </div>
-      <div className="font-gilroy text-[#EEE5E5] text-[15px] leading-[26px] font-[400] text-center">© 2024 Yöntem Teknoloji. All Rights Reserved. Proudly crafted by Yöntem Teknoloji.</div>
+      <div className="font-gilroy text-[#EEE5E5] text-[15px] leading-[26px] font-[400] text-center">© 2025 Yöntem Teknoloji. All Rights Reserved. Design and Developed by CyberX Studio.</div>
     </div>
   );
 }

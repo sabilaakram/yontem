@@ -8,6 +8,17 @@ const nextConfig = {
             port: "1337",
             pathname: "/uploads/**/*",
           },
+          {
+            protocol: "https",
+            hostname: "admin.yontemteknoloji.com",
+            pathname: "/uploads/**/*",
+          },
+          // {
+          //   protocol: "http",
+          //   hostname: "95.111.235.108",
+          //   port: "1337",
+          //   pathname: "/uploads/**/*",
+          // },
         ],
       },
 };

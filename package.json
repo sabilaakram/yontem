@@ -31,7 +31,7 @@
     "hero-slider": "^3.2.1",
     "jsdom": "^26.0.0",
     "lucide-react": "^0.447.0",
-    "next": "14.2.13",
+    "next": "^14.2.13",
     "next-safe-action": "^7.10.2",
     "nodemailer": "^6.9.16",
     "qs": "^6.14.0",

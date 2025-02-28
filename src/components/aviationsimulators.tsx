@@ -88,7 +88,7 @@ function AviationSimulators() {
 
             {/* Button */}
             <Button asChild className="flex items-center space-x-2">
-            <Link href={"/aviationsimulator"}>
+            <Link href={"/aviationtrainingsimulators"}>
               Discover More <ArrowUpRight className="h-[20px] w-[20px]" />{" "}
               {/* Reduced icon size */}
               </Link>
@@ -154,7 +154,7 @@ function AviationSimulators() {
 
         {/* Button */}
         <Button asChild className="flex items-center space-x-2">
-            <Link href={"/aviationsimulator"}>
+            <Link href={"/aviationtrainingsimulators"}>
               Discover More <ArrowUpRight className="h-[20px] w-[20px]" />{" "}
               {/* Reduced icon size */}
               </Link>

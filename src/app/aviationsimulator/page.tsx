@@ -57,7 +57,7 @@ function AviationSimulator() {
       descriptionColor="#161C2D"
       imageSrc="/aviation_training_simulators.webp"
       buttonText='View All'
-      buttonLink='/contact'
+      buttonLink='/aviationtrainingsimulators'
       showButton={true}
       reverseLayout={false}
     />

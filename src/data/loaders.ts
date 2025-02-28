@@ -14,7 +14,6 @@ async function fetchData(url: string) {
     if (!response.ok) throw new Error(`Http error! status ${response.status}`);
 
     const data = await response.json();
-    console.log(flattenAttributes)
     return flattenAttributes(data);
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -22,7 +21,7 @@ async function fetchData(url: string) {
   }
 }
 
-export async function getProducts() {
+export async function getATSProducts() {
   const url = new URL("/api/aviation-products", baseURL);
   console.log("Fetching products from URL:", url.href);
 
@@ -31,6 +30,12 @@ export async function getProducts() {
       product_main_image: {
         fields: ["alternativeText", "name", "url"],
       },
+      product_extra_images: {
+        fields: ['alternativeText', 'name', 'url']
+      },
+      product_header_image: {
+        fields: ['alternativeText', 'name', 'url']
+      }
     },
     
   });
@@ -39,6 +44,27 @@ export async function getProducts() {
 }
 
 
-fetch("http://localhost:1337/api/aviation-products")
-  .then((res) => res.json())
-  .then((data) => console.log(data));
+export const getATSProductBySlug = async (slug: string) => {
+  const url = new URL(`/api/aviation-products/${slug}`, baseURL);
+
+  url.search = qs.stringify({
+    populate: {
+      product_main_image: {
+        fields: ["alternativeText", "name", "url"],
+      },
+      product_extra_images: {
+        fields: ['alternativeText', 'name', 'url']
+      },
+      product_header_image: {
+        fields: ['alternativeText', 'name', 'url']
+      }
+    },
+  });
+
+  return await fetchData(url.href);
+};
+
+
+// fetch("http://localhost:1337/api/aviation-products")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));

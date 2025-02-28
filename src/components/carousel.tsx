@@ -15,11 +15,12 @@ const ProductCarousel: React.FC<{ data: { id: string; url: string; alternativeTe
         }),
       ]}
     >
-      <CarouselContent className="flex justify-center items-center space-x-4">
+      <CarouselContent className="flex justify-center items-center lg:space-x-4 space-x-0">
         {data.map((image) => (
           <CarouselItem
             key={image.id}
-            className="flex-[0_0_20%] max-w-[20%] flex items-center justify-center" // Centers each item
+            className="flex-[0_0_20%] max-w-[60%] flex items-center justify-center" // Centers each item
+            // className="flex-[0_0_20%] max-w-[60%] flex items-center justify-center" // Centers each item
           >
             <Image
               src={image.url}

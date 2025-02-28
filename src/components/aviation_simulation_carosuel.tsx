@@ -23,14 +23,14 @@ const AviationSimulationCarousel: React.FC = () => {
       heading: "Aviation Training Simulators",
       text: "With lots of unique blocks, you can easily build a page easily without any coding. With lots of unique blocks, you can easily build a page easily without any coding.",
       button_text: "Discover More",
-      link: "/aviationsimulator",
+      link: "/aviationtrainingsimulators",
     },
     {
       backgroundImage: "/aviation_maintainance_simulators.webp",
       heading: "Aviation Maintenance Simulators",
       text: "Another set of descriptive text for the second card. This could be longer or shorter.",
-      button_text: "Discover More",
-      link: "/aviationsimulator",
+      button_text: "Discover More",                                                                    
+      link: "/aviationtrainingsimulators",
     },
   ];
 

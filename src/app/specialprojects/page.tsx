@@ -56,7 +56,7 @@ function SpecialProjects() {
       description="This compact air disinfection machine offers quick and effective air purification for small spaces, such as bedrooms and offices. Its sleek design makes it easy to fit into any interior without compromising on performance."
       descriptionColor="#161C2D"
       imageSrc="/Tipi Time.webp"
-      buttonText='View All'
+      buttonText='Get A Quote'
       buttonLink='/contact'
       showButton={true}
       reverseLayout={false}
@@ -68,7 +68,7 @@ function SpecialProjects() {
       description="Designed for larger spaces, this ceiling-mounted unit uses advanced UV air sterilization technology to reduce airborne pollutants. It is an ideal solution for clinics, schools, and commercial spaces where clean air is essential."
       descriptionColor="#161C2D"
       imageSrc="/TavanAsthma Tip.webp"
-      buttonText='View All'
+      buttonText='Get A Quote'
       buttonLink='/contact'
       showButton={true}
       reverseLayout={true}
@@ -80,7 +80,7 @@ function SpecialProjects() {
       description="A versatile portable air disinfection device that can be moved easily from one room to another. Its powerful filtration system ensures continuous air purification for healthier living spaces."
       descriptionColor="#161C2D"
       imageSrc="/Standing Type.webp"
-      buttonText='View All'
+      buttonText='Get A Quote'
       buttonLink='/contact'
       showButton={true}
       reverseLayout={false}
@@ -92,7 +92,7 @@ function SpecialProjects() {
       description="This smart air disinfection machine can be mounted on walls to save space and provide constant air purification. It is suitable for homes, offices, and public spaces that require ongoing air sanitation."
       descriptionColor="#161C2D"
       imageSrc="/Wall Mount.webp"
-      buttonText='View All'
+      buttonText='Get A Quote'
       buttonLink='/contact'
       showButton={true}
       reverseLayout={true}
