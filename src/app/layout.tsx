@@ -52,8 +52,8 @@ export const metadata: Metadata = {
     canonical:"https://www.yontemteknoloji.com/",
   },
   robots: {
-    follow: false,
-    index: false,
+    follow: true,
+    index: true,
   },
 
 };

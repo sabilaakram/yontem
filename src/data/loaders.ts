@@ -68,3 +68,9 @@ export const getATSProductBySlug = async (slug: string) => {
 // fetch("http://localhost:1337/api/aviation-products")
 //   .then((res) => res.json())
 //   .then((data) => console.log(data));
+
+export const getPageMetadata = async (slug: string) => {
+  const url = new URL(`/api/pages-metadatas/${slug}`, baseURL);
+  return await fetchData(url.href);
+  
+}

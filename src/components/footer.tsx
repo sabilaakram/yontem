@@ -54,9 +54,10 @@ function Footer() {
         <div className="flex flex-col text-[#EEE5E5] lg:pt-[100px] font-gilroy justify-start lg:items-start items-center">
             <p className="text-[15px] leading-[26px] font-bold pb-[20px]">Legal</p>
             <ul className="text-[17px] text-[#ffffff] leading-[40px] font-medium lg:text-start text-center">
-                <li>Privacy Policy</li>
-                <li>Terms & Conditions</li>
-                <li>Return Policy</li>
+                {/* <li>Privacy Policy</li> */}
+                <li><Link href={'/privacy-policy'}>Privacy Policy</Link></li>
+                <li><Link href={'/terms-and-conditions'}>Terms & Conditions</Link></li>
+                {/* <li>Return Policy</li> */}
             </ul>
         </div>
       </div>
