@@ -28,11 +28,18 @@ function Footer() {
             Yontem Teknoloji: Innovating Simulators and Laboratory Solutions
           </p>
           <div className="flex gap-[20px]">
-            <FaTwitter size={18} color="white" />
-            <FaFacebookSquare size={18} color="white" />
-            <FaInstagram size={18} color="white" />
-            <FaLinkedin size={18} color="white" />
-          </div>
+  <a href="https://www.facebook.com/profile.php?id=100032740456783" target="_blank" rel="noopener noreferrer">
+    <FaFacebookSquare size={18} color="white" />
+  </a>
+  
+  <a href="https://www.instagram.com/yontemteknoloji/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer">
+    <FaInstagram size={18} color="white" />
+  </a>
+  
+  <a href="https://www.linkedin.com/company/yontemteknoloji/" target="_blank" rel="noopener noreferrer">
+    <FaLinkedin size={18} color="white" />
+  </a>
+</div>
         </div>
         <div className="flex flex-col text-[#EEE5E5] lg:pt-[100px] font-gilroy justify-start lg:items-start items-center">
             <p className="text-[15px] leading-[26px] font-bold pb-[20px]">Company</p>

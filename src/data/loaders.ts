@@ -21,6 +21,7 @@ async function fetchData(url: string) {
   }
 }
 
+
 export async function getATSProducts() {
   const url = new URL("/api/aviation-products", baseURL);
   console.log("Fetching products from URL:", url.href);
@@ -44,8 +45,52 @@ export async function getATSProducts() {
 }
 
 
+export async function getAMSProducts() {
+  const url = new URL("/api/aviation-maintenance-products", baseURL);
+  console.log("Fetching products from URL:", url.href);
+
+  url.search = qs.stringify({
+    populate: {
+      product_main_image: {
+        fields: ["alternativeText", "name", "url"],
+      },
+      product_extra_images: {
+        fields: ['alternativeText', 'name', 'url']
+      },
+      product_header_image: {
+        fields: ['alternativeText', 'name', 'url']
+      }
+    },
+    
+  });
+
+  return await fetchData(url.href);
+}
+
+
 export const getATSProductBySlug = async (slug: string) => {
   const url = new URL(`/api/aviation-products/${slug}`, baseURL);
+
+  url.search = qs.stringify({
+    populate: {
+      product_main_image: {
+        fields: ["alternativeText", "name", "url"],
+      },
+      product_extra_images: {
+        fields: ['alternativeText', 'name', 'url']
+      },
+      product_header_image: {
+        fields: ['alternativeText', 'name', 'url']
+      }
+    },
+  });
+
+  return await fetchData(url.href);
+};
+
+
+export const getAMSProductBySlug = async (slug: string) => {
+  const url = new URL(`/api/aviation-maintenance-products/${slug}`, baseURL);
 
   url.search = qs.stringify({
     populate: {

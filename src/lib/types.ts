@@ -27,6 +27,10 @@ export interface Product {
 
 export interface ProductDetail {
   id: number;
+  metatitle: string | null
+  metadescription: string | null
+  metakeywords: string | { type: string; children: { text: string }[] }[] | null
+  metacanonical: Url | null
   product_name: string;
   product_header_image: {
     url: string;
@@ -46,3 +50,6 @@ export interface ProductDetail {
   additional_benefits: BlocksContent;
   slug: string;
 }
+
+
+
