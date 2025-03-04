@@ -7,7 +7,7 @@ import { headers } from "next/headers";
 
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const metadata: SinglePageProps = await getPageMetadata('aviation-training-simulators');
+  const metadata: SinglePageProps = await getPageMetadata('aviationtrainingsimulators');
 
   // console.log("Raw Metadata:", metadata);
 

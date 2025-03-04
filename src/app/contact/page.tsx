@@ -12,7 +12,7 @@ const images = [
   ];
 
   export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const metadata: SinglePageProps = await getPageMetadata('contact-us');
+    const metadata: SinglePageProps = await getPageMetadata('contact');
   
     // console.log("Raw Metadata:", metadata);
   
