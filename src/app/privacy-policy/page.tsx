@@ -4,9 +4,12 @@ import { Metadata } from "next";
 import HeroSection from "@/components/hero_section";
 import { getPageMetadata } from "@/data/loaders";
 import { PageProps, SinglePageProps } from "@/lib/types";
+import { headers } from "next/headers";
+
+
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const metadata: SinglePageProps = await getPageMetadata('privacypolicy');
+  const metadata: SinglePageProps = await getPageMetadata('privacy-policy');
 
   console.log("Raw Metadata:", metadata);
 
@@ -20,15 +23,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords = metadata.metakeywords.split(",").map((k) => k.trim());
   }
 
+  const headersList = headers();
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-proto') || 'http';
+  const canonicalUrl = `${protocol}://${host}/${metadata.slug}`;
+
   return {
     title: metadata?.metatitle,
     description: metadata?.metadescription,
     keywords,
     alternates: {
-      canonical: `http://localhost:3000/api/pages-metadatas/${metadata.slug}`,
+      canonical: canonicalUrl,
     },
   };
 }
+
 const TermsAndConditions = () => {
   return (
     <>

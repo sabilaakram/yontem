@@ -10,7 +10,7 @@ const Specialprojects = () => {
   return (
     <div className="mx-auto flex flex-col items-center justify-center py-[50px] gap-[20px] lg:pt-[100px] lg:gap-[50px] lg:bg-gradient-to-b lg:from-[#D8D8D8] lg:via-[#D8D8D8] lg:to-transparent">
       <div className="w-[85%] lg:gap-[30px] gap-[20px] flex flex-col">
-        <h1
+        <h2
           className={`text-[#171616] font-gilroy font-[800] text-center text-[36px] md:text-[52px] lg:text-[60px] lg:leading-[70px] md:leading-[60px] leading-[40px] lg:line-clamp-2`}
         >
           Special <br />
@@ -19,11 +19,12 @@ const Specialprojects = () => {
           >
             Projects
           </span>
-        </h1>
+        </h2>
         <p
           className={`text-[#161C2D] lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center`}
         >
-          Focused on solving unique industry challenges, Yontem Teknoloji delivers customized solutions that push the boundaries of innovation.
+          In response to the challenges of COVID, Yontem Teknoloji developed advanced {" "}
+          <a href="/special-projects" className="text-[#E31E24] hover:text-[#ff676c]">air disinfection devices</a>, delivering groundbreaking solutions that enhanced safety and set new industry benchmarks.
         </p>
       </div>
       <div
@@ -60,7 +61,7 @@ const Specialprojects = () => {
           Designed to ensure clean, safe environments, our Air Disinfection Devices provide advanced air purification for critical areas like aircraft and medical facilities.
           </p>
           <Button asChild className="flex items-center space-x-2">
-            <Link href="/specialprojects">
+            <Link href="/special-projects">
             Discover More <ArrowUpRight className="h-[20px] w-[20px]" />
             </Link>
             

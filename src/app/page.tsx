@@ -63,7 +63,7 @@ export default function Home() {
         />
         {/* <Carousel
           heading="Trusted Clients"
-          description="Your trusted partner for professional aircraft simulator solutions. We deliver world-class training, marine simulators, and laboratory solutions. We are trusted globally for precision and innovation."
+          description="We are your trusted partner for Flight and Marine Simulation Solutions. We deliver world-class training, simulators, and laboratory solutions. We have worked with diverse clients globally from the industry, acclaimed for our precision and innovation."
           images={imageList}
           headingColor="text-[#EEE5E5]"
           descriptionColor="text-[#EEE5E5]"
@@ -73,7 +73,8 @@ export default function Home() {
       <MaritimeSimulators/>
       <Labatorysolutions/>
       <Specialprojects/>
-      {/* <CTA slides={slides}/>
+       <CTA slides={slides}/>
+       {/*
     <News/>
     <Blogs/> */}
     </div>

@@ -10,7 +10,7 @@ function MaritimeSimulators() {
   return (
     <div className="mx-auto flex flex-col items-center justify-center pt-[50px] gap-[20px] lg:pt-[100px] lg:gap-[50px] lg:bg-gradient-to-b lg:from-[#D8D8D8] lg:via-[#D8D8D8] lg:to-transparent">
       <div className="w-[85%] lg:gap-[30px] gap-[20px] flex flex-col">
-        <h1
+        <h2
           className={`text-[#171616] font-gilroy font-[800] text-center text-[36px] md:text-[52px] lg:text-[60px] lg:leading-[70px] md:leading-[60px] leading-[40px] lg:line-clamp-2`}
         >
           Maritime<br />
@@ -19,11 +19,11 @@ function MaritimeSimulators() {
           >
             Simulators
           </span>
-        </h1>
+        </h2>
         <p
           className={`text-[#161C2D] lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center `}
         >
-          Providing an immersive and lifelike environment, Maritime Simulators are designed to enhance proficiency and ensure safety in various marine operations.
+          Providing an immersive and lifelike environment, ship simulators are designed to enhance proficiency and ensure safety in various marine operations.
         </p>
       </div>
       <div className="relative lg:flex w-[85%] h-[392px] border rounded-lg  hidden">
@@ -77,12 +77,11 @@ function MaritimeSimulators() {
 
             {/* Description */}
             <p className="text-white text-left font-gilroy text-[24px] leading-[36px] mb-[24px]">
-            Immersive and realistic scenarios for comprehensive crew training, improving safety and operational performance at sea with advanced professional simulator solutions.
-            </p>
+            Our maritime training simulators offer immersive, realistic scenarios, enhancing crew safety and operational performance with high-quality aviation and maritime simulators.            </p>
 
             {/* Button */}
             <Button asChild className="flex items-center space-x-2">
-            <Link href={"/maritimesimulator"}>
+            <Link href={"/maritime-training-simulators"}>
               Discover More <ArrowUpRight className="h-[20px] w-[20px]" />{" "}
               {/* Reduced icon size */}
               </Link>
@@ -141,12 +140,11 @@ function MaritimeSimulators() {
 
         {/* Description */}
         <p className="text-white text-right font-gilroy text-[24px] leading-[36px] mb-[24px]">
-        Designed for real-world scenarios, Maritime Maintenance Simulators equip technicians with the skills needed for effective vessel repairs, troubleshooting, and routine maintenance.
-        </p>
+        Designed for real-world scenarios, Maritime Maintenance Simulators equip technicians with the skills needed for effective vessel repairs, troubleshooting, and routine maintenance.        </p>
 
         {/* Button */}
         <Button asChild className="flex items-center space-x-2">
-            <Link href={"/maritimesimulator"}>
+            <Link href={"/maritime-training-simulators"}>
               Discover More <ArrowUpRight className="h-[20px] w-[20px]" />{" "}
               {/* Reduced icon size */}
               </Link>

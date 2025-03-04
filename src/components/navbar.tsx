@@ -21,22 +21,12 @@ const simulators: { title: string; href: string; }[] = [
   },
   {
     title: "Maritime Simulator",
-    href: "/maritimesimulator",
+    href: "/maritime-training-simulators",
   },
   
 ]
 
-const solutions: { title: string; href: string; }[] = [
-  {
-    title: "Aviation Simulator",
-    href: "/aviationsimulator",
-  },
-  {
-    title: "Maritime Simulator",
-    href: "/maritimesimulator",
-  },
-  
-]
+
 
 export function NavigationMenuDemo() {
   return (
@@ -63,7 +53,7 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-        <NavigationMenuLink href="/labatorysolutions" className={navigationMenuTriggerStyle()}>
+        <NavigationMenuLink href="/electric-and-electronics-laboratory-solutions" className={navigationMenuTriggerStyle()}>
               Laboratory Solutions
             </NavigationMenuLink>
           {/* <NavigationMenuTrigger>Laboratory Solutions</NavigationMenuTrigger>
@@ -81,7 +71,7 @@ export function NavigationMenuDemo() {
           </NavigationMenuContent> */}
         </NavigationMenuItem>
         <NavigationMenuItem>
-        <NavigationMenuLink href="/specialprojects" className={navigationMenuTriggerStyle()}>
+        <NavigationMenuLink href="/special-projects" className={navigationMenuTriggerStyle()}>
               Special Projects
             </NavigationMenuLink>
           {/* <NavigationMenuTrigger>Special Projects</NavigationMenuTrigger> */}

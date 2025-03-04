@@ -1,29 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 
 const slides = [
   {
-    heading: "Soar Higher with Next Gen Flight Simulators",
-    text: "Experience the pinnacle of flight simulation, designed to elevate your training to new heights. Elevate your training with simulators engineered for precision and reliability.",
-    buttonText: "Discover Now",
+    heading: "Professional Simulator Solutions Build for Excellence",
+    text: "Discover the future of aviation training as Yontem Teknoloji is a professional simulator company, trusted worldwide for delivering unmatched accuracy and performance.",
+    buttonText: "Discover more",
     buttonLink: "/aviationsimulator",
+    backgroundImage: "/Hero_1.webp",
+    link: "/aviationsimulator",
+    linkText: "aviation training",
+  },
+  {
+    heading: "Real-World Marine Training With Simulation Technology Provider",
+    text: "Advanced maritime simulation solutions with ship simulators engineered to deliver realistic training experiences, improving operational readiness and safety for maritime professionals.",
+    buttonText: "Discover more",
+    buttonLink: "/maritime-training-simulators",
+    backgroundImage: "/Hero_1.webp",
+    link: "/maritime-training-simulators",
+    linkText: "ship simulators",
+  },
+  {
+    heading: "Cutting-Edge Laboratory Solutions For Advanced, Precise Testing And Training",
+    text: "As a leading simulator manufacturer, we offer innovative laboratory equipment for accurate and reliable testing environments, enhancing research and development efficiency.",
+    buttonText: "Discover more",
+    buttonLink: "/electric-and-electronics-laboratory-solutions",
     backgroundImage: "/Hero_1.webp",
   },
   {
-    heading: "Unleash the Skies with Cutting-Edge Technology",
-    text: "Fly with unmatched precision and immerse yourself in a world of advanced flight training solutions.",
-    buttonText: "Learn More",
-    buttonLink: "/aviationsimulator",
-    backgroundImage: "/Hero_1.webp",
-  },
-  {
-    heading: "Transform Your Training Experience",
-    text: "Step into the future of aviation with simulators tailored for excellence and efficiency.",
-    buttonText: "Get Started",
-    buttonLink: "/contact",
+    heading: "Reliable Air Disinfection Devices For Cleaner, Safer Environments",
+    text: "Our disinfection technology ensures a safer, healthier environment by eliminating airborne contaminants.",
+    buttonText: "Discover more",
+    buttonLink: "/special-projects",
     backgroundImage: "/Hero_1.webp",
   },
 ];
@@ -51,6 +63,21 @@ const HeroSection = () => {
     return () => clearInterval(timer); // Cleanup interval on component unmount
   }, []);
 
+  const renderTextWithLink = (text:string, link?:string, linkText?:string) => {
+    if (!link || !linkText) return text;
+
+    const parts = text.split(linkText);
+    return (
+      <>
+        {parts[0]}
+        <Link href={link} className="text-[#e31e25] hover:text-[#ff676c]">
+          {linkText}
+        </Link>
+        {parts[1]}
+      </>
+    );
+  };
+
   return (
     <div
       className="bg-scroll place-content-center"
@@ -66,10 +93,14 @@ const HeroSection = () => {
           {slides[currentIndex].heading}
         </h1>
         <p className="text-[18px] lg:text-[28px] mb-[40px] text-[#EEE5E5] font-gilroy">
-          {slides[currentIndex].text}
+          {renderTextWithLink(
+            slides[currentIndex].text,
+            slides[currentIndex].link,
+            slides[currentIndex].linkText
+          )}
         </p>
         <Button
-          className="px-6 py-3 gap-[10px] bg-[#E31E24] text-[#EEE5E5] rounded-[8px] font-gilroy font-medium text-lg hover:bg-[#161C2D] transition"
+          className="px-6 py-3 gap-[10px] bg-[#E31E24] text-[#EEE5E5] rounded-[8px] font-gilroy font-medium text-lg hover:bg-[#515D6A] transition"
           onClick={() =>
             (window.location.href = slides[currentIndex].buttonLink)
           }

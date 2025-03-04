@@ -2,22 +2,34 @@ import { Metadata } from "next";
 import { PageProps, ProductDetail } from "@/lib/types";
 import { getAMSProductBySlug } from "@/data/loaders";
 import ProductDetailClient from "@/components/productdetailedclient";
+import { headers } from "next/headers";
 
-// ✅ Server function to generate metadata for each product
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const product: ProductDetail = await getAMSProductBySlug(params.slug);
+
+  const headersList = headers();
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-proto') || 'http';
+  const canonicalUrl = `${protocol}://${host}/aviationmaintenancesimulators/${params.slug}`;
 
   return {
     title: product.metatitle,
     description: product.metadescription,
-    keywords: Array.isArray(product.metakeywords) ? product.metakeywords.map(keyword => typeof keyword === 'string' ? keyword : keyword.children.map(child => child.text).join(' ')) : product.metakeywords,
+    keywords: Array.isArray(product.metakeywords) 
+      ? product.metakeywords.map(keyword => 
+          typeof keyword === 'string' 
+            ? keyword 
+            : keyword.children.map(child => child.text).join(' ')
+        ) 
+      : product.metakeywords,
     alternates: {
-      canonical: `http://localhost:3000/products/${params.slug}`,
+      canonical: canonicalUrl,
     },
   };
 }
 
-// ✅ Server Component that fetches product data
+
 export default async function ProductDetailPage({ params }: PageProps) {
   const product: ProductDetail = await getAMSProductBySlug(params.slug);
 

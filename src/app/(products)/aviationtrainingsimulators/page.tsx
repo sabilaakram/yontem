@@ -2,12 +2,14 @@ import { Metadata } from "next";
 import { PageProps, SinglePageProps } from "@/lib/types";
 import { getPageMetadata } from "@/data/loaders";
 import ProductsClient from "@/components/ATSProductsClient";
+import { headers } from "next/headers";
 
-// ✅ This function now works properly in the server component
+
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const metadata: SinglePageProps = await getPageMetadata("aviation-training-simulators");
+  const metadata: SinglePageProps = await getPageMetadata('aviation-training-simulators');
 
-  console.log("Raw Metadata:", metadata);
+  // console.log("Raw Metadata:", metadata);
 
   let keywords: string[] = [];
 
@@ -19,17 +21,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords = metadata.metakeywords.split(",").map((k) => k.trim());
   }
 
+  const headersList = headers();
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-proto') || 'http';
+  const canonicalUrl = `${protocol}://${host}/${metadata.slug}`;
+
   return {
     title: metadata?.metatitle,
     description: metadata?.metadescription,
     keywords,
     alternates: {
-      canonical: `http://localhost:3000/api/pages-metadatas/${metadata.slug}`,
+      canonical: canonicalUrl,
     },
   };
 }
 
-// ✅ Server component that imports the client component
 const ProductsPage = () => {
   return <ProductsClient />;
 };

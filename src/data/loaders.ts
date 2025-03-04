@@ -114,6 +114,14 @@ export const getAMSProductBySlug = async (slug: string) => {
 //   .then((res) => res.json())
 //   .then((data) => console.log(data));
 
+
+export const getBlogBySlug = async (slug: string) => {
+  const url = new URL(`/api/blogs${slug}`, baseURL);
+  return await fetchData(url.href);
+  
+}
+
+
 export const getPageMetadata = async (slug: string) => {
   const url = new URL(`/api/pages-metadatas/${slug}`, baseURL);
   return await fetchData(url.href);

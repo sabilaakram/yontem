@@ -10,7 +10,7 @@ const Labatorysolutions = () => {
   return (
     <div className="mx-auto flex flex-col items-center justify-center lg:py-[100px] pt-[50px] lg:gap-[50px] gap-[20px]">
       <div className="w-[85%] lg:gap-[30px] gap-[20px] flex flex-col">
-        <h1
+        <h2
           className={`text-[#171616] font-gilroy font-[800] text-center text-[36px] md:text-[52px] lg:text-[60px] lg:leading-[70px] md:leading-[60px] leading-[40px] lg:line-clamp-2`}
         >
           Laboratory <br />
@@ -19,12 +19,12 @@ const Labatorysolutions = () => {
           >
             Solutions
           </span>
-        </h1>
+        </h2>
         <p
           className={`text-[#161C2D] lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center`}
         >
-          Transform your research and development capabilities with heavy-duty
-          laboratory solutions, designed to meet the most demanding industrial
+          Transform your research and development capabilities with heavy-duty{" "}
+          <a href="/electric-and-electronics-laboratory-solutions" className="text-[#E31E24] hover:text-[#ff676c]">laboratory solutions</a>, designed to meet the most demanding industrial
           and scientific standards with precision and innovation.
         </p>
       </div>
@@ -47,7 +47,7 @@ const Labatorysolutions = () => {
           }`}
         >
           <p className="text-white font-gilroy text-[60px] font-[800] leading-[70px] p-10 text-start">
-            Electrical & Electronics Laboratory Solutions (E&E Solutions)
+          Electrical & Electronics Training & Equipments
           </p>
         </div>
         <div
@@ -56,15 +56,13 @@ const Labatorysolutions = () => {
           }`}
         >
           <p className="text-white text-left font-gilroy text-[48px] font-[800] leading-[60px] mb-[20px]">
-            Electrical & Electronics Laboratory Solutions (E&E Solutions)
+          Electrical & Electronics Training & Equipments
           </p>
           <p className="text-white text-left font-gilroy text-[24px] leading-[32px] mb-[30px]">
-            Empowering innovation with cutting-edge electrical and electronics
-            training equipment for hands-on learning and industry-ready
-            expertise.
+          Empowering innovation with cutting-edge electrical and electronics training equipment for hands-on learning and industry-ready expertise.
           </p>
           <Button asChild className="flex items-center space-x-2">
-            <Link href="/labatorysolutions">
+            <Link href="/electric-and-electronics-laboratory-solutions">
             Discover More <ArrowUpRight className="h-[20px] w-[20px]" />
             </Link>
           </Button>

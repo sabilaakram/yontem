@@ -21,16 +21,16 @@ const AviationSimulationCarousel: React.FC = () => {
     {
       backgroundImage: "/ATS.png",
       heading: "Aviation Training Simulators",
-      text: "With lots of unique blocks, you can easily build a page easily without any coding. With lots of unique blocks, you can easily build a page easily without any coding.",
+      text: "Our aviation training simulators provide immersive, real-world training, enhancing pilot skills with high-quality flight and ship simulators for optimal readiness.",
       button_text: "Discover More",
       link: "/aviationtrainingsimulators",
     },
     {
       backgroundImage: "/aviation_maintainance_simulators.webp",
       heading: "Aviation Maintenance Simulators",
-      text: "Another set of descriptive text for the second card. This could be longer or shorter.",
+      text: "Aviation Maintenance Simulators provide hands-on, practical training for technicians, ensuring aircraft are serviced safely and efficiently using advanced simulation solutions.",
       button_text: "Discover More",                                                                    
-      link: "/aviationtrainingsimulators",
+      link: "/aviationmaintenancesimulators",
     },
   ];
 

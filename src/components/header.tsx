@@ -8,10 +8,6 @@ import { MobileMenu } from "./mobilenavbar";
 import { Button } from "./ui/button";
 
 
-
-
-
-
 function Header() {
   return (
     <header className="absolute top-0 left-0 w-full z-10 bg-[#191928] bg-opacity-50 text-white p-5 px-10"> {/* Key changes here */}

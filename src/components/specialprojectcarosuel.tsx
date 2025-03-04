@@ -23,7 +23,7 @@ const SpecialProjectcarosuel: React.FC = () => {
       heading: "Air disinfection Devices",
       text: "Designed to ensure clean, safe environments, our Air Disinfection Devices provide advanced air purification for critical areas like aircraft and medical facilities.",
       button_text: "Discover More",
-      link: "/specialprojects",
+      link: "/special-projects",
     },
   ];
 

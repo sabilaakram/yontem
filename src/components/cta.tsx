@@ -55,11 +55,11 @@ const CTA: React.FC<CTAProps> = ({ slides }) => {
       ></div>
 
       <div className="relative z-10 place-content-center lg:px-[50px] md:px-[50px] px-[20px] text-center text-white pt-[30px] pb-[30px]">
-        <h1 className="lg:text-[54px] md:text-[36px] text-[18px] font-bold mb-[20px] lg:leading-[60px] md:leading-[40px] leading-[22px] font-gilroy capitalize text-[#EEE5E5]">
+        <h2 className="lg:text-[54px] md:text-[36px] text-[18px] font-bold mb-[20px] lg:leading-[60px] md:leading-[40px] leading-[22px] font-gilroy capitalize text-[#EEE5E5]">
           {slides[currentIndex].heading}
           <br />
           {slides[currentIndex].text}
-        </h1>
+        </h2>
         <Button
           className="px-6 py-3 gap-[10px] bg-[#E31E24] text-[#EEE5E5] rounded-[8px] font-gilroy font-medium text-lg hover:bg-[#161C2D] transition"
           onClick={() =>

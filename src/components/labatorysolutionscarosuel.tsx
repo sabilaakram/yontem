@@ -20,10 +20,10 @@ const Labatorysolutionscarosuel: React.FC = () => {
   const cardData: CardData[] = [
     {
       backgroundImage: "/labatorysolutions.webp",
-      heading: "Electrical & Electronics Laboratory Solutions (E&E Solutions)",
+      heading: "Electrical & Electronics Training & Equipments",
       text: "Empowering innovation with cutting-edge electrical and electronics training equipment for hands-on learning and industry-ready expertise.",
       button_text: "Discover More",
-      link: "/labatorysolutions",
+      link: "/electric-and-electronics-laboratory-solutions",
     },
   ];
 

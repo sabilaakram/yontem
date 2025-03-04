@@ -6,6 +6,22 @@ export interface PageProps {
   params: { slug: string; id: string };
 }
 
+
+//blog
+export interface BlogDetail {
+  id: number;
+  slug: string;
+  FeaturedImage: {
+    url: string;
+    alternativeText: string;
+  };
+  NavMenuName: string;
+  FeaturedText: string;
+  metatitle: string;
+  metadescription: string;
+  metakeywords: string[];
+}
+
 export interface SinglePageProps {
   id: number
   metatitle: string | null

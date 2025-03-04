@@ -21,16 +21,16 @@ const MaritimeSimulationCarousel: React.FC = () => {
     {
       backgroundImage: "/Maritimetrainingsimulators.webp",
       heading: "Maritime Training Simulators",
-      text: "Immersive and realistic scenarios for comprehensive crew training, improving safety and operational performance at sea with advanced professional simulator solutions.",
+      text: "Our maritime training simulators offer immersive, realistic scenarios, enhancing crew safety and operational performance with high-quality aviation and maritime simulators.",
       button_text: "Discover More",
-      link: "/maritimesimulator",
+      link: "/maritime-training-simulators",
     },
     {
       backgroundImage: "/Maritime_maintenance_simulator.webp",
       heading: "Maritime Maintenance Simulator",
       text: "Designed for real-world scenarios, Maritime Maintenance Simulators equip technicians with the skills needed for effective vessel repairs, troubleshooting, and routine maintenance.",
       button_text: "Discover More",
-      link: "/maritimesimulator",
+      link: "/maritime-training-simulators",
     },
   ];
 

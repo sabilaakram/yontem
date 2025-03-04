@@ -97,3 +97,41 @@ function Blogs() {
 }
 
 export default Blogs;
+
+
+// import { Metadata } from "next";
+// import { getBlogBySlug } from "@/data/loaders"; // Your function to fetch blog data
+// import { PageProps, BlogDetail } from "@/lib/types";
+// import BlogsClient from "./blogs_client";
+
+// // ✅ Generate Metadata for Each Blog
+// export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+//   const blog: BlogDetail = await getBlogBySlug(params.slug);
+
+//   if (!blog) {
+//     return {
+//       title: "Blog Not Found",
+//       description: "The requested blog post could not be found.",
+//     };
+//   }
+
+//   return {
+//     title: blog.metatitle,
+//     description: blog.metadescription,
+//     keywords: blog.metakeywords || [],
+//     alternates: {
+//       canonical: `http://localhost:3000/blogs/${params.slug}`,
+//     },
+//   };
+// }
+
+// // ✅ Server Component that Fetches Blog Data
+// export default async function BlogsPage({ params }: PageProps) {
+//   const blog: BlogDetail = await getBlogBySlug(params.slug);
+
+//   if (!blog) {
+//     return <div>Blog not found.</div>;
+//   }
+
+//   return <BlogsClient blog={blog} />;
+// }

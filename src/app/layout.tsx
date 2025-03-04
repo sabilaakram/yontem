@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import JsonLdSchema from "@/components/JsonLdSchema";
+import Head from "next/head";
 
 export const gilroy = localFont({
   src: [
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     "simulator manufacturer",
   ],
   alternates:{
-    canonical:"https://www.yontemteknoloji.com/",
+    canonical:"https://yontemteknoloji.com/",
   },
   robots: {
     follow: true,
@@ -71,6 +72,7 @@ const jsonLd = [
   },
 ];
 
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -79,6 +81,19 @@ export default async function RootLayout({
   // const breadcrumbJson = await getBreadCrumbJsonSchema();
   return (
     <html lang="en">
+      <Head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-83Q5K31KSE"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-83Q5K31KSE');
+            `,
+          }}
+        />
+      </Head>
       <body
       
         className={`${gilroy.variable} antialiased`}

@@ -25,7 +25,7 @@ const Carousel: React.FC<CarouselTemplateProps> = ({
   return (
     <div className={` mx-auto ${bgColor} flex flex-col  items-center justify-center lg:py-[100px] py-[50px] `}>
       <div className="w-[85%] gap-[30px] flex flex-col">
-      <h1 className={`${headingColor} font-gilroy font-[800] text-center text-[36px] md:text-[52px] lg:text-[60px] lg:leading-[70px] md:leading-[60px] leading-[40px] lg:line-clamp-2 lg:px-[100px]`}>
+      <h3 className={`${headingColor} font-gilroy font-[800] text-center text-[36px] md:text-[52px] lg:text-[60px] lg:leading-[70px] md:leading-[60px] leading-[40px] lg:line-clamp-2 lg:px-[100px]`}>
         {heading}<br/>
         {subheading && (
           <span
@@ -34,7 +34,7 @@ const Carousel: React.FC<CarouselTemplateProps> = ({
             {subheading}
           </span>
         )}
-      </h1>
+      </h3>
       <p className={`${descriptionColor} lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center `}>
         {description}
       </p>
