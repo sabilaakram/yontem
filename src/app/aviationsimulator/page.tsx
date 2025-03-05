@@ -104,7 +104,7 @@ function AviationSimulator() {
       bgColor="#D4D4D4"
       title="Aviation Maintenance Simulators"
       titleColor="#161C2D"
-      description="Our aviation maintenance simulators give technicians hands-on experience with diagnosing and repairing aircraft systems. Using advanced avionics simulators and aircraft simulator solutions, professionals can ensure the long-term reliability of flight simulation technology."
+      description="Our aviation maintenance simulators give technicians hands-on experience diagnosing and repairing aircraft systems. Using advanced avionics simulators and aircraft simulator solutions, professionals can ensure the long-term reliability of flight simulation technology."
       descriptionColor="#161C2D"
       imageSrc="/AM_simulators.webp"
       buttonText='View All'

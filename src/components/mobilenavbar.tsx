@@ -71,7 +71,7 @@ export function MobileMenu() {
                     Aviation Simulators
                   </p>
                 </Link>
-                <Link href="/maritimesimulator">
+                <Link href="/maritime-training-simulators">
                   <p className="font-gilroy text-[16px] leading-[24px] font-[500] hover:text-[#E31E24] focus:text-[#E31E24]">
                     Maritime Simulators
                   </p>
@@ -80,14 +80,14 @@ export function MobileMenu() {
             )}
           </div>
           <div>
-            <Link href="/labatorysolutions">
+            <Link href="/electric-and-electronics-laboratory-solutions">
               <p className="font-gilroy justify-center rounded-md text-[18px] leading-[28px] font-[600] px-4   hover:text-[#E31E24]  focus:text-[#E31E24] ">
               Laboratory Solutions
               </p>
             </Link>
           </div>
           <div>
-            <Link href="/specialprojects">
+            <Link href="/special-projects">
               <p className="font-gilroy justify-center rounded-md text-[18px] leading-[28px] font-[600] px-4   hover:text-[#E31E24]  focus:text-[#E31E24] ">
               Special Projects
               </p>

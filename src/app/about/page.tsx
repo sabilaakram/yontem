@@ -156,7 +156,7 @@ function AboutUs() {
         bgColor="#D4D4D4"
         title="Pioneering Simulators and Technology"
         titleColor="#161C2D"
-        description="Our expertise spans four core product categories: Aviation Training Simulators, Maritime Training Simulators, Laboratory Solutions, and Air Disinfection Devices. Our simulators are designed to provide unmatched precision, replicating real-world scenarios to prepare professionals for the challenges they face in the field. We are proud to say that all our simulators are certified by international bodies, including DNV, MCA, and the U.S. Coast Guard, ensuring they meet the highest global standards."
+        description="Our expertise spans four core product categories: Aviation Simulators, Maritime Simulators, Laboratory Solutions, and Air Disinfection Devices. Our simulators are designed to provide unmatched precision, replicating real-world scenarios to prepare professionals for the challenges they face in the field. We are proud to say that all our simulators are certified by international bodies, including DNV, MCA, and the U.S. Coast Guard, ensuring they meet the highest global standards."
         descriptionColor="#161C2D"
         imageSrc="/pioneering.png"
         showButton={false}
@@ -187,7 +187,8 @@ function AboutUs() {
         bgColor="#ffffff"
         title="A Partner in Your Success"
         titleColor="#161C2D"
-        description={`Yontem Teknoloji is more than just a provider of advanced technology—we are a trusted partner in your journey to excellence. Our mission is to supply top-tier equipment and offer comprehensive training and maintenance services, ensuring you get the most out of your investment. From seamless integration to ongoing support, we are here every step of the way. This story of Yontem Teknoloji reflects our dedication to progress, innovation, and quality, making us a trusted leader in the technology sector.`}
+        description={`Yontem Teknoloji is more than just a provider of advanced technology—we are a trusted partner in your journey to excellence. Our mission is to supply top-tier equipment and offer comprehensive training and maintenance services, ensuring you get the most out of your investment. From seamless integration to ongoing support, we are here at every step of the way.
+          This story of Yontem Teknoloji reflects our dedication to progress, innovation, and quality, making us a trusted leader in the technology sector.`}
         descriptionColor="#161C2D"
         imageSrc="/partner_in_your_success.webp"
         showButton={false}
@@ -195,7 +196,7 @@ function AboutUs() {
       />
       {/* <CTA slides={slides}/>
     <News/> */}
-    <Blogs/> 
+    {/* <Blogs/>  */}
     </div>
   );
 }

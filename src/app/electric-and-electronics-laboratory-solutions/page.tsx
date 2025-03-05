@@ -198,7 +198,7 @@ function LabatorySolutions() {
       bgColor="#D4D4D4"
       title="Electromechanical Laboratory"
       titleColor="#161C2D"
-      description="Combining electrical and mechanical systems, this lab covers motors, actuators, and control units. It offers high-quality electronics lab equipment to support complex system integration and automation projects."
+      description="Combining electrical and mechanical systems to cover motors, actuators, and control units. It offers high-quality electronics lab equipment to support complex system integration and automation projects."
       descriptionColor="#161C2D"
       imageSrc="/Electromechanical Laboratory.webp"
       buttonText='Get A Quote'

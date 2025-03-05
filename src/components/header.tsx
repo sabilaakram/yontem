@@ -19,7 +19,7 @@ function Header() {
               alt="Yontem Logo"
               width={120}
               height={75}
-              className="relative" // Removed z-50 as z-10 on the header handles it
+              className="relative w-[80px] h-[50px] sm:w-[100px] sm:h-[60px] md:w-[120px] md:h-[75px]"  // Removed z-50 as z-10 on the header handles it
             />
           </Link>
         </div>

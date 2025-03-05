@@ -5,6 +5,8 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import JsonLdSchema from "@/components/JsonLdSchema";
 import Head from "next/head";
+import ReCaptchaProvider from "@/components/RecaptchaProvider";
+
 
 export const gilroy = localFont({
   src: [
@@ -98,13 +100,14 @@ export default async function RootLayout({
       
         className={`${gilroy.variable} antialiased`}
       >
+        <ReCaptchaProvider>
         <Header/>
         {children}
         <Footer/>
         {jsonLd.map((schema, index) => (
           <JsonLdSchema key={index} schema={JSON.stringify(schema)} />
         ))}
-
+        </ReCaptchaProvider>
         {/* <JsonLdSchema schema={breadcrumbJson.breadcrumbJsonLd} /> */}
       </body>
     </html>

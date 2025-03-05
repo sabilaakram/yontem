@@ -73,7 +73,7 @@ export default function Home() {
       <MaritimeSimulators/>
       <Labatorysolutions/>
       <Specialprojects/>
-       <CTA slides={slides}/>
+       {/* <CTA slides={slides}/> */}
        {/*
     <News/>
     <Blogs/> */}
