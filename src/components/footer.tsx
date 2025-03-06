@@ -29,18 +29,18 @@ function Footer() {
           </p>
           <div className="flex flex-col lg:space-y-2 md:space-y-2 space-y-2">
             <Link href="/">
-              <p className="text-[16px] font-[400px] lg:text-white md:text-white text-[#161C2D] hover:text-[#E31E24] text-left lg:leading-[24px] leading-[20px] lg:line-clamp-2 font-gilroy">
+              <p className="text-[16px] font-[400px] text-white hover:text-[#E31E24] text-center lg:text-left lg:leading-[24px] leading-[20px] lg:line-clamp-2 font-gilroy">
                 Adil Mahallesi, Beykoz Cad. Kemerler Sokak No:6/2 Istanbul,
                 Türkiye
               </p>
             </Link>
             <Link href="/">
-              <p className="text-[16px] font-[400px] lg:text-white md:text-white text-[#161C2D] hover:text-[#E31E24] text-left lg:leading-[24px] leading-[20px] lg:line-clamp-2 font-gilroy">
+              <p className="text-[16px] font-[400px] text-white hover:text-[#E31E24] lg:text-left text-center lg:leading-[24px] leading-[20px] lg:line-clamp-2 font-gilroy">
                 info@yontemteknoloji.com
               </p>
             </Link>
             <Link href="/">
-              <p className="text-[16px] font-[400px] lg:text-white md:text-white text-[#161C2D] hover:text-[#E31E24] text-left lg:leading-[24px] leading-[20px] lg:line-clamp-2 font-gilroy">
+              <p className="text-[16px] font-[400px] text-[white] hover:text-[#E31E24] lg:text-left text-center lg:leading-[24px] leading-[20px] lg:line-clamp-2 font-gilroy">
                 +90 216 592 30 00
               </p>
             </Link>
