@@ -9,9 +9,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import CardCarosuel from "./news_card";
+import NewsCardCarosuel from "./news_card";
 
-interface CardCarosuelProps {
+interface NewsCardCarosuelProps {
   id?: number;
   FeaturedText?: string;
   slug: string;
@@ -22,7 +22,7 @@ interface CardCarosuelProps {
   NavMenuName: string;
 }
 
-const NewsCard = ({ data }: { data: CardCarosuelProps[] }) => {
+const NewsCard = ({ data }: { data: NewsCardCarosuelProps[] }) => {
   return (
     <Carousel
       opts={{
@@ -40,9 +40,9 @@ const NewsCard = ({ data }: { data: CardCarosuelProps[] }) => {
         {data.map((data, index) => (
           <CarouselItem
             key={index}
-            className="basis-[75%] md:basis-1/2 lg:basis-1/4" // Shows 4 cards on large screens
+            className="basis-[75%] md:basis-1/2 lg:basis-1/3" // Shows 4 cards on large screens
           >
-            <CardCarosuel data={data} />
+            <NewsCardCarosuel news={data} />
           </CarouselItem>
         ))}
       </CarouselContent>

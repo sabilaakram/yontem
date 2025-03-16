@@ -1,12 +1,42 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {ArrowUpRight} from "lucide-react";
 import MaritimeSimulationCarousel from "./maritime_simulation_carosuel";
 import Link from "next/link";
+import { getHomepageContent, formatImageUrl } from "@/data/loaders";
+import { HomePage } from "@/lib/types";
+import ParseRichText from "./richtextparser";
 
 function MaritimeSimulators() {
+    const [HomePageData, setHomePageData] = useState<HomePage | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const data = await getHomepageContent();
+          setHomePageData(data);
+        } catch (err) {
+          setError("Failed to fetch About Us data");
+          console.error("Error fetching About Us data:", err);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchData();
+    }, []);
+  
+    if (!HomePageData) return <div></div>;
+    const maritimeTrainingImage = formatImageUrl(
+      HomePageData?.maritime_training_simulators_image
+    );
+    const maritimeMaintenanceImage = formatImageUrl(
+      HomePageData?.maritime_maintenance_simulators_image
+    );
   return (
     <div className="mx-auto flex flex-col items-center justify-center pt-[50px] gap-[20px] lg:pt-[100px] lg:gap-[50px] lg:bg-gradient-to-b lg:from-[#D8D8D8] lg:via-[#D8D8D8] lg:to-transparent">
       <div className="w-[85%] lg:gap-[30px] gap-[20px] flex flex-col">
@@ -20,11 +50,10 @@ function MaritimeSimulators() {
             Simulators
           </span>
         </h2>
-        <p
-          className={`text-[#161C2D] lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center `}
-        >
-          Providing an immersive and lifelike environment, ship simulators are designed to enhance proficiency and ensure safety in various marine operations.
-        </p>
+        <ParseRichText
+          content={HomePageData.maritime_training_simulators} // Replace with actual block content variable
+          paragraphProps="text-[#161C2D] lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center"
+        />
       </div>
       <div className="relative lg:flex w-[85%] h-[392px] border rounded-lg  hidden">
         {/* First Image */}
@@ -48,7 +77,7 @@ function MaritimeSimulators() {
         >
           <Image
             id="image1"
-            src="/Maritimetrainingsimulators.webp"
+            src={maritimeTrainingImage}
             alt="Maritime Training Simulators"
             fill
             style={{ objectFit: "cover" }}
@@ -76,8 +105,10 @@ function MaritimeSimulators() {
             </p>
 
             {/* Description */}
-            <p className="text-white text-left font-gilroy text-[24px] leading-[36px] mb-[24px]">
-            Our maritime training simulators offer immersive, realistic scenarios, enhancing crew safety and operational performance with high-quality aviation and maritime simulators.            </p>
+            <ParseRichText
+              content={HomePageData.maritime_training_simulators}
+              paragraphProps="text-white text-left font-gilroy text-[24px] leading-[36px] mb-[24px]"
+            />
 
             {/* Button */}
             <Button asChild className="flex items-center space-x-2">
@@ -111,7 +142,7 @@ function MaritimeSimulators() {
       {/* Image */}
       <Image
         id="image2"
-        src="/Maritime_maintenance_simulator.webp"
+        src={maritimeMaintenanceImage}
         alt="Maritime Maintenance Simulator"
         fill
         style={{ objectFit: "cover" }}
@@ -139,8 +170,10 @@ function MaritimeSimulators() {
         </p>
 
         {/* Description */}
-        <p className="text-white text-right font-gilroy text-[24px] leading-[36px] mb-[24px]">
-        Designed for real-world scenarios, Maritime Maintenance Simulators equip technicians with the skills needed for effective vessel repairs, troubleshooting, and routine maintenance.        </p>
+        <ParseRichText
+              content={HomePageData.maritime_maintenance_simulators}
+              paragraphProps="text-white text-left font-gilroy text-[24px] leading-[36px] mb-[24px]"
+            />
 
         {/* Button */}
         <Button asChild className="flex items-center space-x-2">

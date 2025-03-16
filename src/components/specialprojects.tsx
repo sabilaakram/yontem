@@ -1,11 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 import SpecialProjectcarosuel from "./specialprojectcarosuel";
 import Link from "next/link";
+import { getHomepageContent, formatImageUrl } from "@/data/loaders";
+import { HomePage } from "@/lib/types";
+import ParseRichText from "./richtextparser";
 
 const Specialprojects = () => {
-  const [isHovering, setIsHovering] = useState(false);
+  const [HomePageData, setHomePageData] = useState<HomePage | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [isHovering, setIsHovering] = useState(false);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const data = await getHomepageContent();
+          setHomePageData(data);
+        } catch (err) {
+          setError("Failed to fetch About Us data");
+          console.error("Error fetching About Us data:", err);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchData();
+    }, []);
+  
+    if (!HomePageData) return <div></div>;
+    const SpecialProjectsImage = formatImageUrl(
+      HomePageData?.special_projects_image
+    );
+  
 
   return (
     <div className="mx-auto flex flex-col items-center justify-center py-[50px] gap-[20px] lg:pt-[100px] lg:gap-[50px] lg:bg-gradient-to-b lg:from-[#D8D8D8] lg:via-[#D8D8D8] lg:to-transparent">
@@ -20,12 +48,10 @@ const Specialprojects = () => {
             Projects
           </span>
         </h2>
-        <p
-          className={`text-[#161C2D] lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center`}
-        >
-          In response to the challenges of COVID, Yontem Teknoloji developed advanced {" "}
-          <a href="/special-projects" className="text-[#E31E24] hover:text-[#ff676c]">air disinfection devices</a>, delivering groundbreaking solutions that enhanced safety and set new industry benchmarks.
-        </p>
+        <ParseRichText
+          content={HomePageData.special_projects}
+          paragraphProps="text-[#161C2D] lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center"
+        />
       </div>
       <div
         className="w-[85%] relative overflow-hidden rounded-[8px] lg:block hidden"
@@ -33,11 +59,10 @@ const Specialprojects = () => {
         onMouseLeave={() => setIsHovering(false)}
       >
         <div
-          className={`h-[400px] md:h-[300px] lg:h-[500px] transition-transform duration-500 ease-in-out ${
-            isHovering ? "scale-110" : "scale-100"
-          } bg-no-repeat bg-cover bg-center`}
+          className="h-[400px] md:h-[300px] lg:h-[500px] transition-transform duration-500 ease-in-out 
+            bg-no-repeat bg-cover bg-center"
           style={{
-            backgroundImage: `linear-gradient(to top, rgba(22, 28, 45, 1), rgba(22, 28, 45, 0)), url('/Air_disinfection_Devices.webp')`,
+            backgroundImage: `linear-gradient(to top, rgba(22, 28, 45, 1), rgba(22, 28, 45, 0)), url('${SpecialProjectsImage}')`,
           }}
         ></div>
         <div
@@ -57,9 +82,10 @@ const Specialprojects = () => {
           <p className="text-white text-left font-gilroy text-[48px] font-[800] leading-[60px] mb-[20px]">
           Air disinfection<br/>Devices
           </p>
-          <p className="text-white text-left font-gilroy text-[24px] leading-[32px] mb-[30px]">
-          Designed to ensure clean, safe environments, our Air Disinfection Devices provide advanced air purification for critical areas like aircraft and medical facilities.
-          </p>
+          <ParseRichText
+            content={HomePageData.air_disinfection_devices}
+            paragraphProps="text-white text-left font-gilroy text-[24px] leading-[32px] mb-[30px]"
+          />
           <Button asChild className="flex items-center space-x-2">
             <Link href="/special-projects">
             Discover More <ArrowUpRight className="h-[20px] w-[20px]" />

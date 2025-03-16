@@ -1,12 +1,43 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import AviationSimulationCarousel from "./aviation_simulation_carosuel";
 import Link from "next/link";
+import { formatImageUrl, getHomepageContent } from "@/data/loaders";
+import { HomePage } from "@/lib/types";
+import ParseRichText from "./richtextparser";
 
 function AviationSimulators() {
+  const [HomePageData, setHomePageData] = useState<HomePage | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const data = await getHomepageContent();
+        setHomePageData(data);
+      } catch (err) {
+        setError("Failed to fetch About Us data");
+        console.error("Error fetching About Us data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!HomePageData) return <div></div>;
+  const aviationTrainingImage = formatImageUrl(
+    HomePageData?.aviation_training_simulators_image
+  );
+  const aviationMaintenanceImage = formatImageUrl(
+    HomePageData?.aviation_maintenance_simulators_image
+  );
   return (
     <div className="mx-auto  flex flex-col  items-center justify-center lg:py-[100px] pt-[50px] lg:gap-[50px] gap-[20px]">
       <div className="w-[85%] lg:gap-[30px] gap-[20px] flex flex-col">
@@ -20,19 +51,10 @@ function AviationSimulators() {
             Simulators
           </span>
         </h2>
-        <p
-          className={`text-[#161C2D] lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center `}
-        >
-          Designed for immersive, real-world flight training, our aviation{" "}
-          <a
-            href="/training-simulators"
-            className="text-[#E31E24] hover:text-[#ff676c]"
-          >
-            training simulators
-          </a>{" "}
-          enhance pilot skills and operational readiness with high-quality
-          professional aircraft flight simulators.
-        </p>
+        <ParseRichText
+          content={HomePageData.aviation_simulators} // Replace with actual block content variable
+          paragraphProps="text-[#161C2D] lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center"
+        />
       </div>
       <div className="relative lg:flex w-[85%] h-[392px] border rounded-lg  hidden">
         {/* First Image */}
@@ -56,8 +78,8 @@ function AviationSimulators() {
         >
           <Image
             id="image1"
-            src="/ATS.png"
-            alt="Picture of the author"
+            src={aviationTrainingImage} // Replace with actual image URL
+            alt="Aviation Training Simulators"
             fill
             style={{ objectFit: "cover" }}
             className="w-full h-full rounded-s-lg"
@@ -86,11 +108,10 @@ function AviationSimulators() {
             </p>
 
             {/* Description */}
-            <p className="text-white text-left font-gilroy text-[24px] leading-[36px] mb-[24px]">
-              Our aviation training simulators provide immersive, real-world
-              training, enhancing pilot skills with high-quality flight and ship
-              simulators for optimal readiness.
-            </p>
+            <ParseRichText
+              content={HomePageData.aviation_training_simulators}
+              paragraphProps="text-white text-left font-gilroy text-[24px] leading-[36px] mb-[24px]"
+            />
 
             {/* Button */}
             <Button asChild className="flex items-center space-x-2">
@@ -124,8 +145,8 @@ function AviationSimulators() {
           {/* Image */}
           <Image
             id="image2"
-            src="/aviation_maintainance_simulators.webp"
-            alt="Picture of the author"
+            src={aviationMaintenanceImage} // Replace with actual image URL
+            alt="Aviation Maintainance Simulators"
             fill
             style={{ objectFit: "cover" }}
             className="w-full h-full rounded-br-lg rounded-tr-lg"
@@ -152,11 +173,11 @@ function AviationSimulators() {
             </p>
 
             {/* Description */}
-            <p className="text-white text-right font-gilroy text-[24px] leading-[36px] mb-[24px]">
-              Aviation Maintenance Simulators provide hands-on, practical
-              training for technicians, ensuring aircraft are serviced safely
-              and efficiently using advanced simulation solutions.
-            </p>
+
+            <ParseRichText
+              content={HomePageData.aviation_maintenance_simulators}
+              paragraphProps="text-white text-right font-gilroy text-[24px] leading-[36px] mb-[24px]"
+            />
 
             {/* Button */}
             <Button asChild className="flex items-center space-x-2">

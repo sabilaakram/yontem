@@ -1,14 +1,19 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
-import { Button } from "./ui/button"; // Make sure this path is correct
+import { Button } from "./ui/button"; // Ensure the path is correct
 import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
+import ParseRichText from "@/components/richtextparser"; // Import the rich text parser
+import { BlocksContent } from "@strapi/blocks-react-renderer";
+import { getStrapiURL } from "@/lib/utils";
 
 interface ContainerProps {
   bgColor?: string;
   title?: string;
   titleColor?: string;
-  description?: string;
+  description?: BlocksContent | string; // Changed from `string` to `BlocksContent`
   descriptionColor?: string;
   imageSrc?: string;
   showButton?: boolean;
@@ -22,37 +27,26 @@ const Container: React.FC<ContainerProps> = ({
   bgColor = "#ffffff",
   title = "Default Title",
   titleColor = "#000000",
-  description = "Default description goes here.",
+  description,
   descriptionColor = "#000000",
-  imageSrc = "/default-image.png",
+  imageSrc = "",
   showButton = true,
   buttonText = "View All",
   buttonLink = "/",
   reverseLayout = false,
-  bold = [],
 }) => {
-  const renderDescription = () => {
-    if (!bold.length) {
-      return description;
-    }
-
-    const boldRegex = new RegExp(`(${bold.join("|")})`, "gi");
-
-    return description.split(boldRegex).map((part, index) =>
-      bold.map(b => b.toLowerCase()).includes(part.toLowerCase()) ? (
-        <strong key={index}>{part}</strong>
-      ) : (
-        part
-      )
-    );
-  };
-
+  const fullImageSrc = imageSrc?.startsWith("http") ? imageSrc : `${getStrapiURL()}/${imageSrc.replace(/^\//, "")}`;
   return (
+    
     <div
       className="lg:py-[80px] md:py-[70px] py-[50px] w-full flex place-content-center"
       style={{ backgroundColor: bgColor }}
     >
-      <div className={`w-[85%] flex ${reverseLayout ? 'md:flex-row-reverse lg:flex-row-reverse' : 'md:flex-row lg:flex-row'} gap-[60px] flex-col`}>
+      <div
+        className={`w-[85%] flex ${
+          reverseLayout ? "md:flex-row-reverse lg:flex-row-reverse" : "md:flex-row lg:flex-row"
+        } gap-[60px] flex-col`}
+      >
         <div className="flex flex-col lg:w-[60%] md:w-[60%] w-full lg:gap-[30px] gap-[20px]">
           <h2
             style={{ color: titleColor }}
@@ -60,12 +54,23 @@ const Container: React.FC<ContainerProps> = ({
           >
             {title}
           </h2>
-          <p
-            style={{ color: descriptionColor }}
-            className="font-gilroy font-[400] text-[16px] md:text-[18px] lg:text-[24px] lg:leading-[36px] md:leading-[28px] leading-[20px]"
-          >
-            {renderDescription()}
-          </p>
+
+          {/* Use ParseRichText to render rich content properly */}
+          {description && typeof description !== 'string' && (
+            <ParseRichText
+              content={description}
+              paragraphProps={`text-[${descriptionColor}] font-gilroy font-[400] text-[16px] md:text-[18px] lg:text-[24px] lg:leading-[36px] md:leading-[28px] leading-[20px]`}
+            />
+          )}
+          {description && typeof description === 'string' && (
+            <p
+              style={{ color: descriptionColor }}
+              className="text-[#161C2D] font-gilroy font-[400] text-[16px] md:text-[18px] lg:text-[24px] lg:leading-[36px] md:leading-[28px] leading-[20px]"
+            >
+              {description}
+            </p>
+          )}
+
           {showButton && (
             <Link href={buttonLink} legacyBehavior passHref>
               <Button className="px-6 py-3 gap-[10px] bg-[#E31E24] text-[#EEE5E5] rounded-[8px] font-gilroy font-medium text-lg hover:bg-[#515D6A] transition flex items-center flex-row">
@@ -76,7 +81,7 @@ const Container: React.FC<ContainerProps> = ({
         </div>
         <div className="lg:w-[40%] md:w-[40%] md:h-full lg:h-full w-full h-[200px] relative">
           <Image
-            src={imageSrc}
+            src={fullImageSrc}
             alt="Image"
             fill
             style={{ objectFit: "cover" }}

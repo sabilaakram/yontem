@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import CardCarosuel from "./news_card";
+import CardCarosuel from "./blog_card";
 
 interface CardCarosuelProps {
   id?: number;

@@ -7,12 +7,15 @@ import { MdArrowOutward } from "react-icons/md";
 import type { ProductDetail } from "@/lib/types";
 import ParseRichText from "@/components/richtextparser";
 import { getStrapiURL } from "@/lib/utils";
+import Faqs from "./faqs_section";
 
 interface ProductDetailClientProps {
   product: ProductDetail;
 }
 
-const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ product }) => {
+const ProductDetailClient: React.FC<ProductDetailClientProps> = ({
+  product,
+}) => {
   const baseurl = getStrapiURL();
 
   return (
@@ -35,8 +38,13 @@ const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ product }) =>
           <div className="flex flex-col md:flex-row lg:flex-row lg:gap-[60px] md:gap-[30px] gap-[20px]">
             <div className="lg:w-[400px] md:w-[350px]">
               <Image
-                src={baseurl + product.product_main_image.url || "/placeholder.svg"}
-                alt={product.product_main_image.alternativeText || "Product main image"}
+                src={
+                  baseurl + product.product_main_image.url || "/placeholder.svg"
+                }
+                alt={
+                  product.product_main_image.alternativeText ||
+                  "Product main image"
+                }
                 className="w-full h-full border border-none rounded-[8px] object-cover"
                 height={550}
                 width={550}
@@ -83,7 +91,10 @@ const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ product }) =>
             <h2 className="lg:text-[48px] text-[40px] leading-[50px] font-gilroy font-bold">
               Product Overview
             </h2>
-            <ParseRichText content={product.product_overview} paragraphProps="text-[24px] text-[#000000] font-normal font-gilroy" />
+            <ParseRichText
+              content={product.product_overview}
+              paragraphProps="text-[24px] text-[#000000] font-normal font-gilroy"
+            />
           </div>
 
           {/* Features Explained */}
@@ -99,8 +110,16 @@ const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ product }) =>
             <h2 className="lg:text-[48px] text-[40px] leading-[50px] font-gilroy font-bold">
               Additional Benefits
             </h2>
-            <ParseRichText content={product.additional_benefits} paragraphProps="text-[24px] text-[#000000] font-normal font-gilroy" />
+            <ParseRichText
+              content={product.additional_benefits}
+              paragraphProps="text-[24px] text-[#000000] font-normal font-gilroy"
+            />
           </div>
+          {/* FAQs */}
+          <h2 className="lg:text-[48px] text-[40px] leading-[50px] font-gilroy font-bold">
+              Frequently Asked Questions
+            </h2>          
+          <Faqs product={product}/>
         </div>
       </div>
     </div>

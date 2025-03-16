@@ -1,11 +1,13 @@
 import ProductCarousel from "@/components/carousel";
+import { BlocksContent } from "@strapi/blocks-react-renderer";
 import React from "react";
+import ParseRichText from "./richtextparser";
 
 interface CarouselTemplateProps {
   heading: string;
   subheading?: string; // Optional subheading
-  description: string;
-  images: { id: string; url: string; alt?: string }[];
+  description: BlocksContent;
+  images: { url: string; alt?: string }[];
   headingColor?: string; // Optional custom color for heading
   subheadingGradient?: string; // Optional gradient for subheading
   bgColor?: string; // Background color for the component
@@ -35,10 +37,11 @@ const Carousel: React.FC<CarouselTemplateProps> = ({
           </span>
         )}
       </h3>
-      <p className={`${descriptionColor} lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-center `}>
-        {description}
-      </p>
-      <ProductCarousel data={images} />
+      <ParseRichText
+          content={description}
+          paragraphProps={`${descriptionColor} font-gilroy font-[400] text-[16px] md:text-[18px] lg:text-[24px] lg:leading-[36px] md:leading-[28px] leading-[20px] text-center`}
+        />
+      <ProductCarousel data={images.map((image, index) => ({ ...image, id: index.toString() }))} />
       </div>
       
     </div>

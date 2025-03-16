@@ -1,70 +1,48 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NewsCard from "./newscard";
 import { Button } from "./ui/button";
 import { MdArrowOutward } from "react-icons/md";
 import Link from "next/link";
+import { getNewsData } from "@/data/loaders";
+import type { News as NewsType } from "@/lib/types";
 
 function News() {
-    const dummyData = [
-        {
-          id: 1,
-          slug: "Latest News",
-          FeaturedImage: {
-            url: "/ATS.png",
-            alternativeText: "Latest News",
-          },
-          NavMenuName: "Latest News",
-          FeaturedText: "A versatile air disinfection device designed for easy placement in any room, providing continuous purification for improved air quality.",
-        },
-        {
-            id: 2,
-            slug: "Latest News",
-            FeaturedImage: {
-              url: "/AMS.png",
-              alternativeText: "Latest News",
-            },
-            NavMenuName: "Latest News",
-            FeaturedText: "A versatile air disinfection device designed for easy placement in any room, providing continuous purification for improved air quality.",
-          },
-          {
-            id: 3,
-            slug: "Latest News",
-            FeaturedImage: {
-              url: "/CTQ.png",
-              alternativeText: "Latest News",
-            },
-            NavMenuName: "Latest News",
-            FeaturedText: "A versatile air disinfection device designed for easy placement in any room, providing continuous purification for improved air quality.",
-          },
-          {
-            id: 4,
-            slug: "Latest News",
-            FeaturedImage: {
-              url: "/CTQ.png",
-              alternativeText: "Latest News",
-            },
-            NavMenuName: "Latest News",
-            FeaturedText: "A versatile air disinfection device designed for easy placement in any room, providing continuous purification for improved air quality.",
-          },
-          {
-            id: 5,
-            slug: "Latest News",
-            FeaturedImage: {
-              url: "/CTQ.png",
-              alternativeText: "Latest News",
-            },
-            NavMenuName: "Latest News",
-            FeaturedText: "A versatile air disinfection device designed for easy placement in any room, providing continuous purification for improved air quality.",
-          },
-      ];
+  const [news, setNews] = useState<NewsType[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const data = await getNewsData()
+        setNews(data.data)
+      } catch (error) {
+        console.error("Failed to fetch news:", error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchNews()
+  }, [])
+
+  // Map the Strapi data structure to the structure expected by NewsCard
+  const mappedNewsData = news.map((news) => ({
+    id: news.id,
+    slug: news.slug,
+    FeaturedImage: {
+      url: news.news_main_image.url,
+      alternativeText: news.news_main_image.alternativeText,
+    },
+    NavMenuName: news.news_name,
+    FeaturedText: news.news_short_description,
+  }))
     
   return (
     <div className="lg:pt-[80px] md:pt-[70px] pt-[50px]">
     <div className="flex flex-col md:w-full md:items-center items-center lg:items-start lg:pl-[100px]">
-      <div className="lg:w-[70%] md:w-[85%] w-[90%] gap-[10px] lg:gap-[30px] flex flex-col ">
+      <div className=" gap-[10px] lg:gap-[30px] flex flex-col ">
         <h2
-          className={`font-gilroy font-[800] text-left text-[36px] md:text-[52px] lg:text-[60px] lg:leading-[70px] md:leading-[60px] leading-[40px] lg:line-clamp-2`}
+          className={` lg:w-[70%] md:w-[85%] w-[90%] font-gilroy font-[800] text-left text-[36px] md:text-[52px] lg:text-[60px] lg:leading-[70px] md:leading-[60px] leading-[40px] lg:line-clamp-2`}
         >
           Industry Insights:
           <span
@@ -74,7 +52,7 @@ function News() {
           </span>
         </h2>
         <p
-          className={` lg:line-clamp-3 text-[18px] leading-[28px] lg:text-[28px] font-gilroy font-[600] text-left`}
+          className={`lg:line-clamp-3 text-[18px] leading-[30px] lg:text-[28px] font-gilroy font-[600] text-left`}
         >
           Explore the latest trends, news, and industry insights shaping the
           future.
@@ -83,13 +61,19 @@ function News() {
       </div>
       </div>
       <div className=" flex items-center justify-center">
-      <div className="md:w-[90%] lg:w-[90%] w-full">
-      <NewsCard data={dummyData}/>
-      </div>
+      {loading ? (
+          <div className="flex items-center justify-center p-8">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+          </div>
+        ) : (
+          <div className="md:w-[90%] lg:w-[90%] w-full">
+            <NewsCard data={mappedNewsData} />
+          </div>
+        )}
       </div>
       <div className="flex place-content-center">
       <Button asChild className="lg:px-6 lg:py-3 lg:gap-[10px]  bg-[#E31E24] text-[#EEE5E5] rounded-[8px] font-gilroy text-lg hover:bg-[#515D6A] transition font-[600] ">
-        <Link href={"/"}>
+        <Link href={"/news"}>
         See More <MdArrowOutward size={30}/>
         </Link>
         </Button>

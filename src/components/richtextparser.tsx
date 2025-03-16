@@ -33,20 +33,20 @@ const ParseRichText = ({
     <BlocksRenderer
       content={content}
       blocks={{
-      //   image: ({ image }) => (
-      //     <Image
-      //       src={image.url}
-      //       width={image.width}
-      //       height={image.height}
-      //       alt={image.alternativeText || ""}
-      //       className={cn("rounded", imageProps)}
-      //     />
-      //   ),
-      //   link: ({ children, url }) => (
-      //     <Link href={url} className={linkProps}>
-      //       {children}
-      //     </Link>
-      //   ),
+        image: ({ image }) => (
+          <Image
+            src={image.url}
+            width={image.width}
+            height={image.height}
+            alt={image.alternativeText || ""}
+            className={cn("rounded", imageProps)}
+          />
+        ),
+        link: ({ children, url }) => (
+            <Link href={url} className={cn(linkProps, "text-red-600 hover:text-red-800")}>
+            {children}
+            </Link>
+        ),
         list: (props) => {
           if (props.format === "ordered") {
             return (
@@ -60,81 +60,83 @@ const ParseRichText = ({
           );
         },
 
-      //   heading: ({ children, level }) => {
-      //     switch (level) {
-      //       case 1:
-      //         return (
-      //           <h1 className={cn("font-sans font-bold", headingProps?.h1)}>
-      //             {children}
-      //           </h1>
-      //         );
-      //       case 2:
-      //         return (
-      //           <h2
-      //             className={cn(
-      //               "font-sans font-bold text-3xl",
-      //               headingProps?.h2
-      //             )}
-      //           >
-      //             {children}
-      //           </h2>
-      //         );
-      //       case 3:
-      //         return (
-      //           <h3
-      //             className={cn(
-      //               "font-sans font-bold text-2xl",
-      //               headingProps?.h3
-      //             )}
-      //           >
-      //             {children}
-      //           </h3>
-      //         );
-      //       case 4:
-      //         return (
-      //           <h4
-      //             className={cn(
-      //               "font-sans font-bold text-xl",
-      //               headingProps?.h4
-      //             )}
-      //           >
-      //             {children}
-      //           </h4>
-      //         );
-      //       case 5:
-      //         return (
-      //           <h5
-      //             className={cn(
-      //               "font-sans font-bold text-lg",
-      //               headingProps?.h5
-      //             )}
-      //           >
-      //             {children}
-      //           </h5>
-      //         );
-      //       case 6:
-      //         return (
-      //           <h6
-      //             className={cn(
-      //               "font-sans font-bold text-base",
-      //               headingProps?.h6
-      //             )}
-      //           >
-      //             {children}
-      //           </h6>
-      //         );
-      //       default:
-      //         return (
-      //           <h1 className={cn("font-sans font-bold", headingProps?.h1)}>
-      //             {children}
-      //           </h1>
-      //         );
-      //     }
-      //   },
+        heading: ({ children, level }) => {
+          switch (level) {
+            case 1:
+              return (
+                <h1 className={cn("font-gilroy font-bold", headingProps?.h1)}>
+                  {children}
+                </h1>
+              );
+            case 2:
+              return (
+                <h2
+                  className={cn(
+                    "font-gilroy font-bold text-3xl",
+                    headingProps?.h2
+                  )}
+                >
+                  {children}
+                </h2>
+              );
+            case 3:
+              return (
+                <h3
+                  className={cn(
+                    "font-gilroy font-bold text-2xl",
+                    headingProps?.h3
+                  )}
+                >
+                  {children}
+                </h3>
+              );
+            case 4:
+              return (
+                <h4
+                  className={cn(
+                    "font-gilroy font-bold text-xl",
+                    headingProps?.h4
+                  )}
+                >
+                  {children}
+                </h4>
+              );
+            case 5:
+              return (
+                <h5
+                  className={cn(
+                    "font-gilroy font-bold text-lg",
+                    headingProps?.h5
+                  )}
+                >
+                  {children}
+                </h5>
+              );
+            case 6:
+              return (
+                <h6
+                  className={cn(
+                    "font-gilroy font-bold text-base",
+                    headingProps?.h6
+                  )}
+                >
+                  {children}
+                </h6>
+              );
+            default:
+              return (
+                <h1 className={cn("font-gilroy font-bold", headingProps?.h1)}>
+                  {children}
+                </h1>
+              );
+          }
+        },
 
-        paragraph: ({ children }) => (
-          <p className={paragraphProps}>{children}</p>
-        ),
+      paragraph: ({ children }) => (
+        <p className={cn(paragraphProps, "font-gilroy font-[400] text-[16px] md:text-[18px] lg:text-[24px] lg:leading-[36px] md:leading-[28px] leading-[20px]")}>
+          {children}
+        </p>
+      ),
       }}
     />
   );

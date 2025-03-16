@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import NewsCard from "./newscard";
+import NewsCard from "./blogscard";
 import { Button } from "./ui/button";
 import { MdArrowOutward } from "react-icons/md";
 import Link from "next/link";

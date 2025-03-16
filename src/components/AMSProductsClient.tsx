@@ -23,6 +23,7 @@ const AMSProductsClient: React.FC = () => {
     };
     fetchProducts();
   }, []);
+  
 
   return (
     <div>

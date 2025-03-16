@@ -7,11 +7,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn, getStrapiURL } from "@/lib/utils";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-type CardCarosuelProps = {
+type NewsCardCarosuelProps = {
   FeaturedImage: {
     url: string;
     alternativeText: string;
@@ -21,15 +21,17 @@ type CardCarosuelProps = {
   slug: string;
 };
 
-type CardCarosuelComponentProps = {
-  data: CardCarosuelProps;
+type NewsCardCarosuelComponentProps = {
+  news: NewsCardCarosuelProps;
   className?: string;
 };
 
-const CardCarosuel: React.FC<CardCarosuelComponentProps> = ({
-  data,
+const NewsCardCarosuel: React.FC<NewsCardCarosuelComponentProps> = ({
+  news,
   className,
+  
 }) => {
+  const baseurl = getStrapiURL();
   return (
     <Card
       className={cn(
@@ -39,24 +41,24 @@ const CardCarosuel: React.FC<CardCarosuelComponentProps> = ({
     >
       <CardHeader className="p-0 relative after:my-2 ">
         <Image
-          src={data.FeaturedImage.url} // Directly use the image URL
-          alt={data.FeaturedImage.alternativeText}
+          src={baseurl + news.FeaturedImage.url} // Directly use the image URL
+          alt={baseurl + news.FeaturedImage.alternativeText}
           width={200}
           height={208}
           className="w-full h-52 object-cover border rounded-xl"
         />
       </CardHeader>
       <CardContent className="p-0 h-full flex flex-col justify-between">
-        <CardTitle className="font-gilroy lg:text-[24px] lg:leading-[50px] font-bold md:text-[21px] md:leading-[20px] text-[18px] leading-[28px] text-[#161C2D]">
-          {data.NavMenuName}
+        <CardTitle className="font-gilroy lg:text-[24px] font-bold md:text-[21px]  text-[18px] text-[#161C2D]">
+          {news.NavMenuName}
         </CardTitle>
-        <CardDescription className="text-wrap mt-2 mb-4 line-clamp-[7] font-gilroy  md:text-[16px] text-[16px] lg:text-[18px] lg:leading-[27px] md:leading-[20px] leading-[24px] text-[#161C2D] font-[500]">
-          {data?.FeaturedText || data.NavMenuName}
+        <CardDescription className="text-wrap mt-2 mb-4  font-gilroy  md:text-[16px] text-[16px] lg:text-[18px] lg:leading-[27px] md:leading-[20px] leading-[24px] text-[#161C2D] font-[500]">
+          {news?.FeaturedText || news.NavMenuName}
         </CardDescription>
 
-        <Link href={`/news/${data.slug}`}>
+        <Link href={`/news/${news.slug}`}>
           <Button className="lg:px-6 lg:py-3 lg:gap-[10px]  bg-[#E31E24] text-[#EEE5E5] rounded-[8px] font-gilroy text-lg hover:bg-[#515D6A] transition font-[600] ">
-            See More
+            Learn More
           </Button>
         </Link>
       </CardContent>
@@ -64,4 +66,4 @@ const CardCarosuel: React.FC<CardCarosuelComponentProps> = ({
   );
 };
 
-export default CardCarosuel;
+export default NewsCardCarosuel;

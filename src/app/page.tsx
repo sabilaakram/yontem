@@ -6,18 +6,55 @@ import AviationSimulators from "../components/aviationsimulators";
 import MaritimeSimulators from "@/components/maritimesimulators";
 import Labatorysolutions from "@/components/labatorysolutions";
 import Specialprojects from "@/components/specialprojects";
-import Blogs from "@/components/blogs";
 import CTA from "@/components/cta";
 import News from "@/components/news";
+import Blogs from "@/components/blogs";
+import { getHomepageContent } from "@/data/loaders";
+import { HomePage } from "@/lib/types";
+import { useState, useEffect } from "react";
+import { getStrapiURL } from "@/lib/utils"; // ✅ Import getStrapiURL()
 
 export default function Home() {
-  const imageList = [
-    { id: "1", url: "/logos/DNV.png", alt: "Image 1" },
-    { id: "2", url: "/logos/iec.png", alt: "Image 2" },
-    { id: "3", url: "/logos/iso.png", alt: "Image 3" },
-    { id: "4", url: "/logos/shsms.png", alt: "Image 4" },
-    { id: "5", url: "/logos/stcw.png", alt: "Image 5" },
-  ];
+  const [HomePageData, setHomePageData] = useState<HomePage | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getHomepageContent();
+        setHomePageData(data);
+      } catch (err) {
+        setError("Failed to fetch About Us data");
+        console.error("Error fetching About Us data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!HomePageData) return <div></div>;
+
+  // ✅ Format image URLs properly to avoid `localhost:3000` issues
+  const certificationsImages =
+    HomePageData.certifications_logos?.map((logo) => ({
+      url: logo.url.startsWith("http")
+        ? logo.url
+        : `${getStrapiURL()}/${logo.url.replace(/^\//, "")}`, // Fix for backend images
+      alt: logo.alternativeText || "Certification Logo",
+    })) || [];
+
+
+    const clientsImages =
+    HomePageData.clients_logos?.map((logo) => ({
+      url: logo.url.startsWith("http")
+        ? logo.url
+        : `${getStrapiURL()}/${logo.url.replace(/^\//, "")}`, // Fix for backend images
+      alt: logo.alternativeText || "Clients Logo",
+    })) || [];
+
   const slides = [
     {
       heading: "Unlock the next level of innovation",
@@ -48,35 +85,36 @@ export default function Home() {
       backgroundImage: "/cta1.jpg",
     },
   ];
+
   return (
     <div>
       <Hero_slider />
       <Whoweare />
       <Carousel
-          heading="Global Certifications of "
-          subheading="Excellence"
-          description="We proudly adhere to international standards like STCW, DNV-IMO, and IEC, and hold ISO 9001, 14001, and OHSAS 18001 certifications, ensuring top-quality solutions in every sector we serve."
-          images={imageList}
-          headingColor="text-[#171616]"
-          subheadingGradient="from-blue-400 via-blue-700 to-black"
-          bgColor="bg-[#D8D8D8]"
-        />
-        {/* <Carousel
-          heading="Trusted Clients"
-          description="We are your trusted partner for Flight and Marine Simulation Solutions. We deliver world-class training, simulators, and laboratory solutions. We have worked with diverse clients globally from the industry, acclaimed for our precision and innovation."
-          images={imageList}
-          headingColor="text-[#EEE5E5]"
-          descriptionColor="text-[#EEE5E5]"
-          bgColor="bg-[#161C2D]"
-        /> */}
+        heading="Global Certifications of "
+        subheading="Excellence"
+        description={HomePageData.certifications}
+        images={certificationsImages} // ✅ Use formatted images
+        headingColor="text-[#171616]"
+        subheadingGradient="from-blue-400 via-blue-700 to-black"
+        bgColor="bg-[#D8D8D8]"
+      />
+      <Carousel
+        heading="Trusted Clients "
+        description={HomePageData.clients}
+        images={clientsImages} // ✅ Use formatted images
+        headingColor="text-[#EEE5E5]"
+        descriptionColor="text-[#EEE5E5]"
+        subheadingGradient="from-blue-40  0 via-blue-700 to-black"
+        bgColor="bg-[#161C2D]"
+      />
       <AviationSimulators />
-      <MaritimeSimulators/>
-      <Labatorysolutions/>
-      <Specialprojects/>
-       {/* <CTA slides={slides}/> */}
-       {/*
-    <News/>
-    <Blogs/> */}
+      <MaritimeSimulators />
+      <Labatorysolutions />
+      <Specialprojects />
+      <CTA slides={slides} />
+      <News />
+      <Blogs />
     </div>
   );
 }
