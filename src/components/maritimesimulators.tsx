@@ -112,7 +112,7 @@ function MaritimeSimulators() {
 
             {/* Button */}
             <Button asChild className="flex items-center space-x-2">
-            <Link href={"/maritime-training-simulators"}>
+            <Link href={"/maritimetrainingsimulators"}>
               Discover More <ArrowUpRight className="h-[20px] w-[20px]" />{" "}
               {/* Reduced icon size */}
               </Link>
@@ -172,12 +172,12 @@ function MaritimeSimulators() {
         {/* Description */}
         <ParseRichText
               content={HomePageData.maritime_maintenance_simulators}
-              paragraphProps="text-white text-left font-gilroy text-[24px] leading-[36px] mb-[24px]"
+              paragraphProps="text-white text-right font-gilroy text-[24px] leading-[36px] mb-[24px]"
             />
 
         {/* Button */}
         <Button asChild className="flex items-center space-x-2">
-            <Link href={"/maritime-training-simulators"}>
+            <Link href={"/maritimemaintenancesimulators"}>
               Discover More <ArrowUpRight className="h-[20px] w-[20px]" />{" "}
               {/* Reduced icon size */}
               </Link>

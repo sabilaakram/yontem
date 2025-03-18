@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Simulation_card from "./simulation_card";
 import {
   Carousel,
@@ -7,21 +7,48 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"; // Import from your shadcn/ui components
+import { getHomepageContent, formatImageUrl } from "@/data/loaders";
+import { HomePage } from "@/lib/types";
+import { BlocksContent } from "@strapi/blocks-react-renderer";
 
 interface CardData {
   backgroundImage: string;
   heading: string;
-  text: string;
+  text: BlocksContent;
   button_text: string;
   link: string;
 }
 
 const SpecialProjectcarosuel: React.FC = () => {
+  const [HomePageData, setHomePageData] = useState<HomePage | null>(null);
+        const [loading, setLoading] = useState(true);
+        const [error, setError] = useState<string | null>(null);
+      
+        useEffect(() => {
+          const fetchData = async () => {
+            try {
+              const data = await getHomepageContent();
+              setHomePageData(data);
+            } catch (err) {
+              setError("Failed to fetch About Us data");
+              console.error("Error fetching About Us data:", err);
+            } finally {
+              setLoading(false);
+            }
+          };
+      
+          fetchData();
+        }, []);
+      
+        if (!HomePageData) return <div></div>;
+        const SpecialProjectsImage = formatImageUrl(
+          HomePageData?.special_projects_image
+        );
   const cardData: CardData[] = [
     {
-      backgroundImage: "/Air_disinfection_Devices.webp",
+      backgroundImage: SpecialProjectsImage,
       heading: "Air disinfection Devices",
-      text: "Designed to ensure clean, safe environments, our Air Disinfection Devices provide advanced air purification for critical areas like aircraft and medical facilities.",
+      text: HomePageData.air_disinfection_devices,
       button_text: "Discover More",
       link: "/special-projects",
     },

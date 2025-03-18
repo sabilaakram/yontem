@@ -1,5 +1,7 @@
+import Blogs from '@/components/blogs';
 import Contact_Section from '@/components/contact_section';
 import HeroSection from '@/components/hero_section'
+import News from '@/components/news';
 import { getPageMetadata } from '@/data/loaders';
 import { PageProps, SinglePageProps } from '@/lib/types';
 import { Metadata } from 'next';
@@ -55,6 +57,9 @@ function ContactUs() {
           ],
         }} />
         <Contact_Section/>
+        
+        <News/>
+    <Blogs/>
     </div>
   )
 }

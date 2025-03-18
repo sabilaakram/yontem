@@ -40,7 +40,7 @@ function News() {
   return (
     <div className="lg:pt-[80px] md:pt-[70px] pt-[50px]">
     <div className="flex flex-col md:w-full md:items-center items-center lg:items-start lg:pl-[100px]">
-      <div className=" gap-[10px] lg:gap-[30px] flex flex-col ">
+      <div className=" gap-[10px] w-[85%]  lg:gap-[30px] flex flex-col ">
         <h2
           className={` lg:w-[70%] md:w-[85%] w-[90%] font-gilroy font-[800] text-left text-[36px] md:text-[52px] lg:text-[60px] lg:leading-[70px] md:leading-[60px] leading-[40px] lg:line-clamp-2`}
         >

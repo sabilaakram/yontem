@@ -40,7 +40,7 @@ function Blogs() {
   return (
     <div className="lg:py-[80px] md:py-[70px] py-[50px]">
       <div className="flex flex-col md:w-full md:items-center items-center lg:items-start lg:pl-[100px]">
-        <div className=" gap-[10px] lg:gap-[30px] flex flex-col ">
+        <div className="w-[85%]  gap-[10px] lg:gap-[30px] flex flex-col ">
           <h2
             className={`font-gilroy font-[800] text-left text-[36px] md:text-[52px] lg:text-[60px] lg:leading-[70px] md:leading-[60px] leading-[40px] lg:line-clamp-2 bg-gradient-to-r from-blue-400 via-blue-700 to-black bg-clip-text text-transparent `}
           >

@@ -109,8 +109,8 @@ function extractTextFromBlock(block: any): string {
 }
 
 export function getStrapiURL() {
-  return process.env.STRAPI_URL || "http://localhost:1337";
-  // return process.env.STRAPI_URL || "https://admin.yontemteknoloji.com";
+  //return process.env.STRAPI_URL || "http://localhost:1337";
+   return process.env.STRAPI_URL || "https://admin.yontemteknoloji.com";
 }
 console.log("fetching from", getStrapiURL());
 

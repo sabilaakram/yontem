@@ -4,6 +4,8 @@ import { News } from "@/lib/types";
 import {getNewsData } from "@/data/loaders";
 import HeroSection from "@/components/hero_section";
 import NewsCard from "./newsCard";
+import CTA from "@/components/cta";
+import Blogs from "@/components/blogs";
 
 const NewsClient: React.FC = () => {
   const [news, setNews] = useState<News[]>([]);
@@ -23,6 +25,37 @@ const NewsClient: React.FC = () => {
     };
     fetchNews();
   }, []);
+
+  const slides = [
+    {
+      heading: "Unlock the next level of innovation",
+      text: "Reach out today",
+      buttonText: "Get Started",
+      buttonLink: "/discover",
+      backgroundImage: "/cta4.jpg",
+    },
+    {
+      heading: "Let us help you power your vision",
+      text: "Get a Quote now!",
+      buttonText: "Learn More",
+      buttonLink: "/learn",
+      backgroundImage: "/cta3.jpg",
+    },
+    {
+      heading: "Your ideal technology solution is just a click away",
+      text: "Get in touch with us!",
+      buttonText: "Get in Touch",
+      buttonLink: "/get-started",
+      backgroundImage: "/cta2.jpg",
+    },
+    {
+      heading: "Turn your challenges into opportunities",
+      text: "Connect with Yontem Teknoloji today!",
+      buttonText: "Connect Now",
+      buttonLink: "/get-started",
+      backgroundImage: "/cta1.jpg",
+    },
+  ];
 
   return (
     <div>
@@ -45,6 +78,8 @@ const NewsClient: React.FC = () => {
           ))}
         </div>
       </div>
+      <CTA slides={slides} />
+      <Blogs/>
     </div>
   );
 };

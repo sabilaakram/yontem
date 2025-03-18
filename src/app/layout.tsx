@@ -35,25 +35,25 @@ export const gilroy = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Avaition and Maritime Simulator Solutions in Turkey - Yontem Teknoloji",
-  description: "Yontem Teknoloji offers professional simulator solutions for aviation, marine, and laboratory services, ensuring cutting-edge training and safety.",
-  keywords:[
-    "professional simulator solutions",
-    "professional simulator company",
-    "professional simulators",
-    "simulation technology provider",
-    "Flight and Marine Simulation Solutions",
-    "simulation solutions",
-    "simulator product solutions",
-    "Flight and Ship simulator",
-    "Aircraft simulator and maritime simulator",
-    "Flight and Marine Simulation Solutions",
-    "High-Quality Aviation and Maritime Simulators",
-    "simulator manufacturer",
-  ],
-  alternates:{
-    canonical:"https://yontemteknoloji.com/",
-  },
+  // title: "Avaition and Maritime Simulator Solutions in Turkey - Yontem Teknoloji",
+  // description: "Yontem Teknoloji offers professional simulator solutions for aviation, marine, and laboratory services, ensuring cutting-edge training and safety.",
+  // keywords:[
+  //   "professional simulator solutions",
+  //   "professional simulator company",
+  //   "professional simulators",
+  //   "simulation technology provider",
+  //   "Flight and Marine Simulation Solutions",
+  //   "simulation solutions",
+  //   "simulator product solutions",
+  //   "Flight and Ship simulator",
+  //   "Aircraft simulator and maritime simulator",
+  //   "Flight and Marine Simulation Solutions",
+  //   "High-Quality Aviation and Maritime Simulators",
+  //   "simulator manufacturer",
+  // ],
+  // alternates:{
+  //   canonical:"https://yontemteknoloji.com/",
+  // },
   robots: {
     follow: true,
     index: true,

@@ -21,7 +21,27 @@ async function fetchData(url: string) {
   }
 }
 
-export const formatImageUrl = (image: { url?: string } | null, fallback: string = "/fallback-image.jpg") => {
+// export async function getSchemaData() {
+//   try {
+//     const res = await fetch(`${getStrapiURL()}/api/schema-setting`, {
+//       headers: { "Content-Type": "application/json" },
+//       cache: "no-store", // Ensures fresh data
+//     });
+
+//     if (!res.ok) {
+//       throw new Error(`Http error! status ${res.status}`);
+//     }
+
+//     const data = await res.json();
+//     return data?.data?.attributes?.jsonLdSchema || [];
+//   } catch (error) {
+//     console.error("Error fetching schema data:", error);
+//     return [];
+//   }
+// }
+
+
+export const formatImageUrl = (image: { url?: string } | null, fallback: string = "/ATS.png") => {
   if (!image?.url) return fallback; // Return fallback if image is missing
 
   return image.url.startsWith("http")

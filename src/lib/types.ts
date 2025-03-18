@@ -393,3 +393,4 @@ export interface NewsDetail {
   publishDate?: string;
   readTime: string;
 }
+

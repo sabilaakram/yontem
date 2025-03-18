@@ -12,6 +12,8 @@ import { toast } from "@/hooks/use-toast"
 import { useEffect, useState } from "react"
 import { FaFacebook, FaTwitter, FaLinkedin, FaLink, FaInstagram } from "react-icons/fa"
 import { format, parseISO } from "date-fns"
+import NewsCta from "./news_cta_section"
+import CTA from "@/components/cta"
 
 interface NewsDetailClientProps {
   news: NewsDetail
@@ -21,6 +23,17 @@ const NewsDetailClient: React.FC<NewsDetailClientProps> = ({ news }) => {
   const baseurl = getStrapiURL()
   const [currentUrl, setCurrentUrl] = useState<string>("")
   const [imageError, setImageError] = useState(false)
+
+
+  const slides = [
+    {
+      heading: "Experience the Future of Training!",
+      text: "Discover Yöntem Teknoloji's Innovations Today!",
+      buttonText: "Get Started",
+      buttonLink: "/discover",
+      backgroundImage: "/cta4.jpg",
+    },
+  ];
 
   // Set the current URL when component mounts (client-side only)
   useEffect(() => {
@@ -229,7 +242,7 @@ const NewsDetailClient: React.FC<NewsDetailClientProps> = ({ news }) => {
 
           {/* Introduction */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-200">Introduction</h2>
+            {/* <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-200">Introduction</h2> */}
             <div className="prose prose-lg max-w-none">
               <ParseRichText content={news.introduction} paragraphProps="text-gray-700 leading-relaxed mb-4" />
             </div>
@@ -246,19 +259,22 @@ const NewsDetailClient: React.FC<NewsDetailClientProps> = ({ news }) => {
 
           {/* Conclusion */}
           <div className="mb-16 border-l-4 border-[#E31E24] pl-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Conclusion</h2>
+            {/* <h2 className="text-2xl font-bold text-gray-900 mb-4">Conclusion</h2> */}
             <div className="prose prose-lg max-w-none">
               <ParseRichText content={news.conclusion} paragraphProps="text-gray-700 leading-relaxed mb-4" />
             </div>
           </div>
 
-          {/* FAQs */}
+          {/* CTA Section */}
+          <CTA slides={slides} />
+
+          {/* FAQs
           {news.Faq && news.Faq.length > 0 && (
             <div className="mb-16 bg-gray-50 rounded-xl p-6 md:p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
               <NewsFaqs product={news} />
             </div>
-          )}
+          )} */}
 
           {/* Share and Navigation */}
           <div className="mt-12 pt-8 border-t border-gray-200">

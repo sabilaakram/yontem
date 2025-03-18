@@ -9,6 +9,8 @@ import { AccordionDemo } from '@/components/faqs';
 import { getStrapiURL } from '@/lib/utils';
 import CTA from '@/components/cta';
 import ParseRichText from '@/components/richtextparser';
+import Blogs from '@/components/blogs';
+import News from '@/components/news';
 
 function MaritimeSimulatorContent() {
     const [MSData, setMSData] = useState<Maritime_Simulators | null>(null);
@@ -71,7 +73,7 @@ function MaritimeSimulatorContent() {
       descriptionColor="#161C2D"
       imageSrc={MSData.maritime_training_simulators_image?.url || "/aviation_training_simulators.webp"}
       buttonText="View All"
-      buttonLink="/aviationtrainingsimulators"
+      buttonLink="/maritimetrainingsimulators"
       showButton={true}
       reverseLayout={false}
     />
@@ -83,7 +85,7 @@ function MaritimeSimulatorContent() {
       descriptionColor="#161C2D"
       imageSrc={MSData.maritime_maintenance_simulators_image?.url || "/AM_simulators.webp"}
       buttonText="View All"
-      buttonLink="/aviationmaintenancesimulators"
+      buttonLink="/maritimemaintenancesimulators"
       showButton={true}
       reverseLayout={true}
     />
@@ -104,6 +106,8 @@ function MaritimeSimulatorContent() {
       ) : (
         <p className="text-center text-gray-500">No FAQs available.</p>
       )}
+      <News/>
+      <Blogs/>
     </div>
   )
 }

@@ -28,18 +28,18 @@ function Footer() {
             Yontem Teknoloji: Innovating Simulators and Laboratory Solutions
           </p>
           <div className="flex flex-col lg:space-y-2 md:space-y-2 space-y-2">
-            <Link href="/">
+            <Link href="https://www.google.com/maps/search/?api=1&query=Adil+Mahallesi,+Beykoz+Cad.+Kemerler+Sokak+No:6/2+Istanbul,+Türkiye">
               <p className="text-[16px] font-[400px] text-white hover:text-[#E31E24] text-center lg:text-left lg:leading-[24px] leading-[20px] lg:line-clamp-2 font-gilroy">
                 Adil Mahallesi, Beykoz Cad. Kemerler Sokak No:6/2 Istanbul,
                 Türkiye
               </p>
             </Link>
-            <Link href="/">
+            <Link href="mailto:info@yontemteknoloji.com">
               <p className="text-[16px] font-[400px] text-white hover:text-[#E31E24] lg:text-left text-center lg:leading-[24px] leading-[20px] lg:line-clamp-2 font-gilroy">
                 info@yontemteknoloji.com
               </p>
             </Link>
-            <Link href="/">
+            <Link href="tel:+902165923000">
               <p className="text-[16px] font-[400px] text-[white] hover:text-[#E31E24] lg:text-left text-center lg:leading-[24px] leading-[20px] lg:line-clamp-2 font-gilroy">
                 +90 216 592 30 00
               </p>
@@ -81,6 +81,12 @@ function Footer() {
             </li>
             <li>
               <Link href={"/contact"}>Contact Us</Link>
+            </li>
+            <li>
+              <Link href={"/blogs"}>Blogs</Link>
+            </li>
+            <li>
+              <Link href={"/news"}>News</Link>
             </li>
             {/* <li>Blogs</li> */}
           </ul>

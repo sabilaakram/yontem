@@ -9,6 +9,8 @@ import { AccordionDemo } from '@/components/faqs';
 import { getStrapiURL } from '@/lib/utils';
 import ParseRichText from '@/components/richtextparser';
 import CTA from '@/components/cta';
+import Blogs from '@/components/blogs';
+import News from '@/components/news';
 
 function LaboratorySolutionContent() {
     const [EELData, setEELData] = useState<EEL_Solutions | null>(null);
@@ -202,6 +204,8 @@ function LaboratorySolutionContent() {
           ) : (
             <p className="text-center text-gray-500">No FAQs available.</p>
           )}
+          <News/>
+          <Blogs/>
     </div>
   )
 }

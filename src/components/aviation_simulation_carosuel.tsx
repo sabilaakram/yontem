@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Simulation_card from "./simulation_card";
 import {
   Carousel,
@@ -7,28 +7,58 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"; // Import from your shadcn/ui components
+import { BlocksContent } from "@strapi/blocks-react-renderer";
+import { getHomepageContent, formatImageUrl } from "@/data/loaders";
+import { HomePage } from "@/lib/types";
 
 interface CardData {
   backgroundImage: string;
   heading: string;
-  text: string;
+  text: BlocksContent;
   button_text: string;
   link: string;
 }
 
-const AviationSimulationCarousel: React.FC = () => {
+function AviationSimulationCarousel() {
+  const [HomePageData, setHomePageData] = useState<HomePage | null>(null);
+        const [loading, setLoading] = useState(true);
+        const [error, setError] = useState<string | null>(null);
+      
+        useEffect(() => {
+          const fetchData = async () => {
+            try {
+              const data = await getHomepageContent();
+              setHomePageData(data);
+            } catch (err) {
+              setError("Failed to fetch About Us data");
+              console.error("Error fetching About Us data:", err);
+            } finally {
+              setLoading(false);
+            }
+          };
+      
+          fetchData();
+        }, []);
+      
+        if (!HomePageData) return <div></div>;
+        const aviationTrainingImage = formatImageUrl(
+          HomePageData?.aviation_training_simulators_image
+        );
+        const aviationMaintenanceImage = formatImageUrl(
+          HomePageData?.aviation_maintenance_simulators_image
+        );
   const cardData: CardData[] = [
     {
-      backgroundImage: "/ATS.png",
+      backgroundImage: aviationTrainingImage,
       heading: "Aviation Training Simulators",
-      text: "Our aviation training simulators provide immersive, real-world training, enhancing pilot skills with high-quality flight and ship simulators for optimal readiness.",
+      text: HomePageData.aviation_training_simulators,
       button_text: "Discover More",
       link: "/aviationtrainingsimulators",
     },
     {
-      backgroundImage: "/aviation_maintainance_simulators.webp",
+      backgroundImage: aviationMaintenanceImage,
       heading: "Aviation Maintenance Simulators",
-      text: "Aviation Maintenance Simulators provide hands-on, practical training for technicians, ensuring aircraft are serviced safely and efficiently using advanced simulation solutions.",
+      text: HomePageData.aviation_maintenance_simulators,
       button_text: "Discover More",                                                                    
       link: "/aviationmaintenancesimulators",
     },

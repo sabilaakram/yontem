@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Simulation_card from "./simulation_card";
 import {
   Carousel,
@@ -7,30 +7,61 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"; // Import from your shadcn/ui components
+import { getHomepageContent, formatImageUrl } from "@/data/loaders";
+import { HomePage } from "@/lib/types";
+
+import { BlocksContent } from "@strapi/blocks-react-renderer"; // Ensure BlocksContent is imported
 
 interface CardData {
   backgroundImage: string;
   heading: string;
-  text: string;
+  text: BlocksContent;
   button_text: string;
   link: string;
 }
 
-const MaritimeSimulationCarousel: React.FC = () => {
+function MaritimeSimulationCarousel() {
+  const [HomePageData, setHomePageData] = useState<HomePage | null>(null);
+      const [loading, setLoading] = useState(true);
+      const [error, setError] = useState<string | null>(null);
+    
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const data = await getHomepageContent();
+            setHomePageData(data);
+          } catch (err) {
+            setError("Failed to fetch About Us data");
+            console.error("Error fetching About Us data:", err);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchData();
+      }, []);
+    
+      if (!HomePageData) return <div></div>;
+      const maritimeTrainingImage = formatImageUrl(
+        HomePageData?.maritime_training_simulators_image
+      );
+      const maritimeMaintenanceImage = formatImageUrl(
+        HomePageData?.maritime_maintenance_simulators_image
+      );
   const cardData: CardData[] = [
     {
-      backgroundImage: "/Maritimetrainingsimulators.webp",
+      backgroundImage: maritimeTrainingImage,
       heading: "Maritime Training Simulators",
-      text: "Our maritime training simulators offer immersive, realistic scenarios, enhancing crew safety and operational performance with high-quality aviation and maritime simulators.",
+      text: HomePageData.maritime_training_simulators,
       button_text: "Discover More",
-      link: "/maritime-training-simulators",
+      link: "/maritimetrainingsimulators",
     },
     {
-      backgroundImage: "/Maritime_maintenance_simulator.webp",
+      backgroundImage: maritimeMaintenanceImage,
       heading: "Maritime Maintenance Simulator",
-      text: "Designed for real-world scenarios, Maritime Maintenance Simulators equip technicians with the skills needed for effective vessel repairs, troubleshooting, and routine maintenance.",
+      text: HomePageData.maritime_maintenance_simulators,
       button_text: "Discover More",
-      link: "/maritime-training-simulators",
+      link: "/maritimemaintenancesimulators",
     },
   ];
 
